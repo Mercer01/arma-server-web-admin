@@ -46,3 +46,5 @@ jspm_packages
 # Project stuff
 config.js
 servers.json
+
+package-lock.json
