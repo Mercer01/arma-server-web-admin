@@ -14,6 +14,7 @@ var Missions = require('./lib/missions')
 var Mods = require('./lib/mods')
 var Logs = require('./lib/logs')
 var Settings = require('./lib/settings')
+var Login = require('./lib/login')
 
 var app = express()
 var server = require('http').Server(app)
@@ -25,7 +26,7 @@ app.use(webpackMiddleware(webpackCompiler, {
   publicPath: webpackConfig.output.publicPath
 }))
 
-setupBasicAuth(config, app)
+// setupBasicAuth(config, app)
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -35,7 +36,13 @@ app.use(morgan(config.logFormat || 'dev'))
 
 app.use(serveStatic(path.join(__dirname, 'public')))
 
+app.get('/login', function (req, res) {
+  res.sendFile(path.join(__dirname, './public/login.html'))
+})
+
 var logs = new Logs(config)
+
+var login = new Login(config)
 
 var manager = new Manager(config, logs)
 manager.load()
@@ -51,6 +58,7 @@ app.use('/api/missions', require('./routes/missions')(missions))
 app.use('/api/mods', require('./routes/mods')(mods))
 app.use('/api/servers', require('./routes/servers')(manager, mods))
 app.use('/api/settings', require('./routes/settings')(settings))
+app.use('/api/login', require('./routes/login')(login))
 
 io.on('connection', function (socket) {
   socket.emit('missions', missions.missions)
