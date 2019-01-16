@@ -46,3 +46,6 @@ jspm_packages
 # Project stuff
 config.js
 servers.json
+*.xml
+.idea/arma-server-web-admin.iml
+package-lock.json
