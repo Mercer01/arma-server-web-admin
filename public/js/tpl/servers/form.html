@@ -46,8 +46,8 @@
         </div>
     </div>
 
-  <div class="form-group">
-    <label for="forcedDifficulty" class="col-sm-2 control-label">Difficulty</label>
+    <div class="form-group">
+      <label for="forcedDifficulty" class="col-sm-2 control-label">Difficulty</label>
     <div class="col-sm-10">
       <select class="form-control forcedDifficulty" value="<%- (forcedDifficulty || '') %>">
         <%= ["", "Recruit", "Regular", "Veteran", "Custom"].map(function (difficulty) {
@@ -55,9 +55,9 @@
           return '<option value="' + difficulty + '" ' + selected + '>' + (difficulty || 'Not set') + '</option>';
         }).join('\n') %>
       </select>
-      <p class="help-block">Difficulty that is always used unless mission rotation states otherwise</p>
+        <p class="help-block">Difficulty that is always used unless mission rotation states otherwise</p>
     </div>
-  </div>
+    </div>
 
     <div class="form-group">
         <label class="col-sm-2 control-label">File Patching</label>
