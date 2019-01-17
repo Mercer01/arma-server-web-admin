@@ -513,11 +513,6 @@ iframe {
     display: block;
 }
 
-.exclamation_mark_sign {
-    background: url("../images/icons/exclamation_mark_sign.svg");
-    background-size: 13px 22px
-}
-
 .overlay:before {
     position: absolute;
     content: " ";
