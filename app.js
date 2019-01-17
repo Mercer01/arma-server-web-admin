@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 morgan.token('user', function (req) { return req.auth ? req.auth.user : 'anon' })
 app.use(morgan(config.logFormat || 'dev'))
 
-app.use(serveStatic(path.join(__dirname, 'public')))
+app.use(serveStatic(path.join(__dirname, 'public'), { maxAge: '60 seconds' }))
 
 app.get('/login', function (req, res) {
   res.sendFile(path.join(__dirname, './public/login.html'))
