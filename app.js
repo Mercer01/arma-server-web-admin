@@ -1,26 +1,26 @@
-var express = require('express')
-var bodyParser = require('body-parser')
-var morgan = require('morgan')
-var path = require('path')
-var serveStatic = require('serve-static')
-var webpack = require('webpack')
-var webpackMiddleware = require('webpack-dev-middleware')
+const express = require('express')
+const bodyParser = require('body-parser')
+const morgan = require('morgan')
+const path = require('path')
+const serveStatic = require('serve-static')
+const webpack = require('webpack')
+const webpackMiddleware = require('webpack-dev-middleware')
 
-var config = require('./config')
-var webpackConfig = require('./webpack.config')
-var setupBasicAuth = require('./lib/setup-basic-auth')
-var Manager = require('./lib/manager')
-var Missions = require('./lib/missions')
-var Mods = require('./lib/mods')
-var Logs = require('./lib/logs')
-var Settings = require('./lib/settings')
-var Login = require('./lib/login')
+const config = require('./config')
+const webpackConfig = require('./webpack.config')
+const setupBasicAuth = require('./lib/setup-basic-auth')
+const Manager = require('./lib/manager')
+const Missions = require('./lib/missions')
+const Mods = require('./lib/mods')
+const Logs = require('./lib/logs')
+const Settings = require('./lib/settings')
+const Login = require('./lib/login')
 
-var app = express()
-var server = require('http').Server(app)
-var io = require('socket.io')(server)
+const app = express()
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
 
-var webpackCompiler = webpack(webpackConfig)
+const webpackCompiler = webpack(webpackConfig)
 
 app.use(webpackMiddleware(webpackCompiler, {
   publicPath: webpackConfig.output.publicPath
@@ -40,18 +40,18 @@ app.get('/login', function (req, res) {
   res.sendFile(path.join(__dirname, './public/login.html'))
 })
 
-var logs = new Logs(config)
+const logs = new Logs(config)
 
-var login = new Login(config)
+const login = new Login(config)
 
-var manager = new Manager(config, logs)
+const manager = new Manager(config, logs)
 manager.load()
 
-var missions = new Missions(config)
-var mods = new Mods(config)
+const missions = new Missions(config)
+const mods = new Mods(config)
 mods.updateMods()
 
-var settings = new Settings(config)
+const settings = new Settings(config)
 
 app.use('/api/logs', require('./routes/logs')(logs))
 app.use('/api/missions', require('./routes/missions')(missions))
