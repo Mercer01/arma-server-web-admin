@@ -34,7 +34,7 @@
 					</span>
 
                 <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                    <input class="input100" type="text" name="email" placeholder="Email">
+                    <input id="emailinput"class="input100" type="text" name="email" placeholder="Email">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100" style="padding-left: 26px">
 							<i class="email-symbol"></i>
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Password is required">
-                    <input class="input100" type="password" name="pass" placeholder="Password">
+                    <input id="pwdinput" class="input100" type="password" name="pass" placeholder="Password">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100" style="padding-left: 26px">
 							<i class="lock-symbol"></i>
@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="container-login100-form-btn">
-                    <button class="login100-form-btn">
+                    <button id="loginbtn" class="login100-form-btn">
                         Login
                     </button>
                 </div>
@@ -86,13 +86,15 @@
 <script src="vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
 <script src="vendor/tilt/tilt.jquery.min.js"></script>
+<!--===============================================================================================-->
+<script src="js/login.js"></script>
+<!--===============================================================================================-->
+
 <script>
   $('.js-tilt').tilt({
     scale: 1.1
   })
 </script>
 <!--===============================================================================================-->
-<script src="js/main.js"></script>
-
 </body>
 </html>
