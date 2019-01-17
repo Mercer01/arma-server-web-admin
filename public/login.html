@@ -20,9 +20,9 @@
     <!--===============================================================================================-->
 </head>
 <body>
-
 <div class="limiter">
     <div class="container-login100">
+        <div id="error_div" class="alert alert-danger fade" role="alert" style="position: absolute; top: 0;"></div>
         <div class="wrap-login100">
             <div class="login100-pic js-tilt" data-tilt>
                 <img alt="IMG" src="images/am2.gif">
@@ -34,7 +34,8 @@
 					</span>
 
                 <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                    <input class="input100" id="emailinput" name="email" placeholder="Email" type="text" autocomplete="username">
+                    <input class="input100" id="email_input" name="email" placeholder="Email" type="email"
+                           autocomplete="username" required>
                     <span class="focus-input100"></span>
                     <span class="symbol-input">
 							<i class="email-symbol symbol"></i>
@@ -43,7 +44,8 @@
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Password is required">
-                    <input class="input100" id="pwdinput" name="pass" placeholder="Password" type="password" autocomplete="current-password">
+                    <input class="input100" id="password_input" name="pass" placeholder="Password" type="password"
+                           autocomplete="current-password" required minlength="3">
                     <span class="focus-input100"></span>
                     <span class="symbol-input">
 							<i class="lock-symbol symbol"></i>

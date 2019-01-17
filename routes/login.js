@@ -1,6 +1,8 @@
 let express = require('express')
 let path = require('path')
 
+const UseMemDB = true
+
 module.exports = function (LoginManager) {
   let router = express.Router()
 
@@ -12,11 +14,17 @@ module.exports = function (LoginManager) {
   router.post('/', async (req, res) => {
     let email = req.body.email
     let password = req.body.password
+    console.log(email, password)
 
     if (email === undefined || password === undefined) {
-      res.status(400).send('A username or Password was not specified')
+      console.log('Undefined U/P')
+      res.status(400).send('A username or password was not specified')
     } else {
-      LoginManager.login(email, password, res)
+      if (!UseMemDB) {
+        LoginManager.login(email, password, res)
+      } else {
+        LoginManager.login_memory(email, password, res)
+      }
     }
   })
 
