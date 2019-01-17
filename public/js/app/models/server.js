@@ -1,10 +1,10 @@
 define(function (require) {
 
-  "use strict";
+  'use strict'
 
-  var $                   = require('jquery'),
-      _                   = require('underscore'),
-      Backbone            = require('backbone');
+  var $ = require('jquery'),
+    _ = require('underscore'),
+    Backbone = require('backbone')
 
   return Backbone.Model.extend({
     defaults: {
@@ -28,6 +28,6 @@ define(function (require) {
       verify_signatures: false,
     },
     urlRoot: '/api/servers/',
-  });
+  })
 
-});
+})
