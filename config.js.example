@@ -20,4 +20,11 @@ module.exports = {
   prefix: "", // Prefix to all server names
   suffix: "", // Suffix to all server names
   logFormat: "dev", // expressjs/morgan log format
+  mysql: {
+    host: "localhost",
+    user: "a user",
+    password: "password",
+    database: "adminpanel"
+  }
+};
 };
