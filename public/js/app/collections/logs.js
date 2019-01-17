@@ -1,16 +1,17 @@
 define(function (require) {
+  'use strict'
 
-  "use strict";
+  const $ = require('jquery')
 
-  const $ = require('jquery'),
-    _ = require('underscore'),
-    Backbone = require('backbone'),
-    Log = require('app/models/log')
+  const _ = require('underscore')
+
+  const Backbone = require('backbone')
+
+  const Log = require('app/models/log')
 
   return Backbone.Collection.extend({
     comparator: 'name',
     model: Log,
     url: '/api/logs/'
-  });
-
-});
+  })
+})

@@ -23,24 +23,25 @@
  * SOFTWARE.
  */
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('popper.js')) :
-	typeof define === 'function' && define.amd ? define(['popper.js'], factory) :
-	(global.Tooltip = factory(global.Popper));
-}(this, (function (Popper) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('popper.js')) :
+    typeof define === 'function' && define.amd ? define(['popper.js'], factory) :
+      (global.Tooltip = factory(global.Popper))
+}(this, (function (Popper) {
+  'use strict'
 
-Popper = Popper && 'default' in Popper ? Popper['default'] : Popper;
+  Popper = Popper && 'default' in Popper ? Popper['default'] : Popper
 
-/**
- * Check if the given variable is a function
- * @method
- * @memberof Popper.Utils
- * @argument {Any} functionToCheck - variable to check
- * @returns {Boolean} answer to: is a function?
- */
-function isFunction(functionToCheck) {
-  const getType = {}
-  return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
-}
+  /**
+   * Check if the given variable is a function
+   * @method
+   * @memberof Popper.Utils
+   * @argument {Any} functionToCheck - variable to check
+   * @returns {Boolean} answer to: is a function?
+   */
+  function isFunction (functionToCheck) {
+    const getType = {}
+    return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]'
+  }
 
   const classCallCheck = function (instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -453,76 +454,76 @@ function isFunction(functionToCheck) {
   }()
 
   /**
- * Placement function, its context is the Tooltip instance.
- * @memberof Tooltip
- * @callback PlacementFunction
- * @param {HTMLElement} tooltip - tooltip DOM node.
- * @param {HTMLElement} reference - reference DOM node.
- * @return {String} placement - One of the allowed placement options.
- */
+   * Placement function, its context is the Tooltip instance.
+   * @memberof Tooltip
+   * @callback PlacementFunction
+   * @param {HTMLElement} tooltip - tooltip DOM node.
+   * @param {HTMLElement} reference - reference DOM node.
+   * @return {String} placement - One of the allowed placement options.
+   */
 
-/**
- * Title function, its context is the Tooltip instance.
- * @memberof Tooltip
- * @callback TitleFunction
- * @return {String} placement - The desired title.
- */
+  /**
+   * Title function, its context is the Tooltip instance.
+   * @memberof Tooltip
+   * @callback TitleFunction
+   * @return {String} placement - The desired title.
+   */
 
 
-var _initialiseProps = function _initialiseProps() {
-  const _this5 = this
+  var _initialiseProps = function _initialiseProps () {
+    const _this5 = this
 
-  this.show = function () {
-    return _this5._show(_this5.reference, _this5.options);
-  };
-
-  this.hide = function () {
-    return _this5._hide();
-  };
-
-  this.dispose = function () {
-    return _this5._dispose();
-  };
-
-  this.toggle = function () {
-    if (_this5._isOpen) {
-      return _this5.hide();
-    } else {
-      return _this5.show();
+    this.show = function () {
+      return _this5._show(_this5.reference, _this5.options)
     }
-  };
 
-  this.arrowSelector = '.tooltip-arrow, .tooltip__arrow';
-  this.innerSelector = '.tooltip-inner, .tooltip__inner';
-  this._events = [];
+    this.hide = function () {
+      return _this5._hide()
+    }
 
-  this._setTooltipNodeEvent = function (evt, reference, delay, options) {
-    const relatedreference = evt.relatedreference || evt.toElement
+    this.dispose = function () {
+      return _this5._dispose()
+    }
 
-    const callback = function callback (evt2) {
-      const relatedreference2 = evt2.relatedreference || evt2.toElement
-
-      // Remove event listener after call
-      _this5._tooltipNode.removeEventListener(evt.type, callback)
-
-      // If the new reference is not the reference element
-      if (!reference.contains(relatedreference2)) {
-        // Schedule to hide tooltip
-        _this5._scheduleHide(reference, options.delay, options, evt2)
+    this.toggle = function () {
+      if (_this5._isOpen) {
+        return _this5.hide()
+      } else {
+        return _this5.show()
       }
     }
 
-    if (_this5._tooltipNode.contains(relatedreference)) {
-      // listen to mouseleave on the tooltip element to be able to hide the tooltip
-      _this5._tooltipNode.addEventListener(evt.type, callback);
-      return true;
+    this.arrowSelector = '.tooltip-arrow, .tooltip__arrow'
+    this.innerSelector = '.tooltip-inner, .tooltip__inner'
+    this._events = []
+
+    this._setTooltipNodeEvent = function (evt, reference, delay, options) {
+      const relatedreference = evt.relatedreference || evt.toElement
+
+      const callback = function callback (evt2) {
+        const relatedreference2 = evt2.relatedreference || evt2.toElement
+
+        // Remove event listener after call
+        _this5._tooltipNode.removeEventListener(evt.type, callback)
+
+        // If the new reference is not the reference element
+        if (!reference.contains(relatedreference2)) {
+          // Schedule to hide tooltip
+          _this5._scheduleHide(reference, options.delay, options, evt2)
+        }
+      }
+
+      if (_this5._tooltipNode.contains(relatedreference)) {
+        // listen to mouseleave on the tooltip element to be able to hide the tooltip
+        _this5._tooltipNode.addEventListener(evt.type, callback)
+        return true
+      }
+
+      return false
     }
+  }
 
-    return false;
-  };
-};
+  return Tooltip
 
-return Tooltip;
-
-})));
+})))
 //# sourceMappingURL=tooltip.js.map

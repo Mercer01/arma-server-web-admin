@@ -1,14 +1,15 @@
 define(function (require) {
+  'use strict'
 
-  "use strict";
+  const $ = require('jquery')
 
-  const $ = require('jquery'),
-    _ = require('underscore'),
-    Backbone = require('backbone'),
-    MissionRotation = require('app/models/mission_rotation')
+  const _ = require('underscore')
+
+  const Backbone = require('backbone')
+
+  const MissionRotation = require('app/models/mission_rotation')
 
   return Backbone.Collection.extend({
-    model: MissionRotation,
-  });
-
-});
+    model: MissionRotation
+  })
+})

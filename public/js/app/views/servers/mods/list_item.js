@@ -1,24 +1,28 @@
 define(function (require) {
+  'use strict'
 
-  "use strict";
+  const $ = require('jquery')
 
-  const $ = require('jquery'),
-    _ = require('underscore'),
-    Backbone = require('backbone'),
-    Marionette = require('marionette'),
-    ModListItemView = require('app/views/mods/list_item'),
-    tpl = require('text!tpl/servers/mods/list_item.html'),
+  const _ = require('underscore')
 
-    template = _.template(tpl)
+  const Backbone = require('backbone')
+
+  const Marionette = require('marionette')
+
+  const ModListItemView = require('app/views/mods/list_item')
+
+  const tpl = require('text!tpl/servers/mods/list_item.html')
+
+  const template = _.template(tpl)
 
   return ModListItemView.extend({
-    tagName: "tr",
+    tagName: 'tr',
     template: template,
 
-    templateHelpers: function(){
+    templateHelpers: function () {
       return {
         enabled: this.options.server.get('mods').indexOf(this.model.get('name')) > -1
       }
-    },
-  });
-});
+    }
+  })
+})

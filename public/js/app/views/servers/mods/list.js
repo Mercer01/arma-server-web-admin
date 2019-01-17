@@ -1,54 +1,59 @@
 define(function (require) {
+  'use strict'
 
-  "use strict";
+  const $ = require('jquery')
 
-  const $ = require('jquery'),
-    _ = require('underscore'),
-    Backbone = require('backbone'),
-    Marionette = require('marionette'),
-    Mods = require('app/collections/mods'),
-    ModsListView = require('app/views/mods/list'),
-    ListItemView = require('app/views/servers/mods/list_item'),
-    tpl = require('text!tpl/servers/mods/list.html')
+  const _ = require('underscore')
+
+  const Backbone = require('backbone')
+
+  const Marionette = require('marionette')
+
+  const Mods = require('app/collections/mods')
+
+  const ModsListView = require('app/views/mods/list')
+
+  const ListItemView = require('app/views/servers/mods/list_item')
+
+  const tpl = require('text!tpl/servers/mods/list.html')
 
   return ModsListView.extend({
     childView: ListItemView,
     template: _.template(tpl),
 
     events: {
-      "click .check-all": "checkAll",
-      "click .uncheck-all": "uncheckAll",
+      'click .check-all': 'checkAll',
+      'click .uncheck-all': 'uncheckAll'
     },
 
-    buildChildView: function(item, ChildViewType, childViewOptions){
+    buildChildView: function (item, ChildViewType, childViewOptions) {
       const options = _.extend({ model: item, server: this.options.server }, childViewOptions)
       const view = new ChildViewType(options)
-      return view;
+      return view
     },
 
-    changeAllCheckbox: function(checked) {
+    changeAllCheckbox: function (checked) {
       this.$('input:checkbox').map(function (idx, el) {
-        return $(el).prop('checked', checked);
+        return $(el).prop('checked', checked)
       })
     },
 
-    checkAll: function(e) {
-      e.preventDefault();
-      this.changeAllCheckbox(true);
+    checkAll: function (e) {
+      e.preventDefault()
+      this.changeAllCheckbox(true)
     },
 
-    uncheckAll: function(e) {
-      e.preventDefault();
-      this.changeAllCheckbox(false);
+    uncheckAll: function (e) {
+      e.preventDefault()
+      this.changeAllCheckbox(false)
     },
 
-    serialize: function() {
+    serialize: function () {
       return {
         mods: this.$('input:checkbox:checked').map(function (idx, el) {
-            return $(el).val();
-          }).get(),
+          return $(el).val()
+        }).get()
       }
-    },
-  });
-
-});
+    }
+  })
+})

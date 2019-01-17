@@ -1,53 +1,57 @@
 define(function (require) {
+  'use strict'
 
-  "use strict";
+  const $ = require('jquery')
 
-  const $ = require('jquery'),
-    _ = require('underscore'),
-    Backbone = require('backbone'),
-    Marionette = require('marionette'),
-    swal = require('sweet-alert'),
-    tpl = require('text!tpl/servers/list_item.html'),
+  const _ = require('underscore')
 
-    template = _.template(tpl)
+  const Backbone = require('backbone')
+
+  const Marionette = require('marionette')
+
+  const swal = require('sweet-alert')
+
+  const tpl = require('text!tpl/servers/list_item.html')
+
+  const template = _.template(tpl)
 
   return Marionette.ItemView.extend({
-    tagName: "tr",
+    tagName: 'tr',
     template: template,
 
     events: {
-      "click .clone": "clone",
-      "click .delete": "delete",
+      'click .clone': 'clone',
+      'click .delete': 'delete'
     },
 
     modelEvents: {
-      "change": "serverUpdated",
+      'change': 'serverUpdated'
     },
 
     clone: function (e) {
       const title = this.model.get('title') + ' Clone'
       const clone = this.model.clone()
-      clone.set({id: null, title: title});
-      clone.save();
+      clone.set({ id: null, title: title })
+      clone.save()
     },
 
     delete: function (event) {
       const self = this
       sweetAlert({
-        title: "Are you sure?",
-        text: "Your server configuration will be deleted!",
-        type: "warning",
+        title: 'Are you sure?',
+        text: 'Your server configuration will be deleted!',
+        type: 'warning',
         showCancelButton: true,
-        confirmButtonClass: "btn-danger",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonClass: 'btn-danger',
+        confirmButtonText: 'Yes, delete it!'
       },
-      function(){
-        self.model.destroy();
-      });
+      function () {
+        self.model.destroy()
+      })
     },
 
     serverUpdated: function (event) {
-      this.render();
-    },
-  });
-});
+      this.render()
+    }
+  })
+})

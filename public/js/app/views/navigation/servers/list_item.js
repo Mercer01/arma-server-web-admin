@@ -1,17 +1,20 @@
 define(function (require) {
+  'use strict'
 
-  "use strict";
+  const $ = require('jquery')
 
-  const $ = require('jquery'),
-    _ = require('underscore'),
-    Backbone = require('backbone'),
-    Marionette = require('marionette'),
-    tpl = require('text!tpl/navigation/servers/list_item.html'),
+  const _ = require('underscore')
 
-    template = _.template(tpl)
+  const Backbone = require('backbone')
+
+  const Marionette = require('marionette')
+
+  const tpl = require('text!tpl/navigation/servers/list_item.html')
+
+  const template = _.template(tpl)
 
   return Marionette.ItemView.extend({
-    tagName: "li",
+    tagName: 'li',
     template: template
-  });
-});
+  })
+})
