@@ -17,10 +17,7 @@ module.exports = function (LoginManager) {
 
       res.status(400).send("A username or Password was not specified")
     } else {
-      LoginManager.login(email,password)
-        .then(console.log(result))
-
-      
+      LoginManager.login(email,password,res)
     }
   })
 
