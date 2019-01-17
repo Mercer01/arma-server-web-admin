@@ -10,7 +10,7 @@
     "lint": "standard --verbose *.js lib/**/*.js routes/**/*.js test/**/*.js",
     "start": "nodemon app.js",
     "test": "node node_modules/mocha/bin/mocha --recursive",
-    "run":"node app.js"
+    "run": "node app.js"
   },
   "standard": {
     "env": [

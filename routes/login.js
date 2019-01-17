@@ -13,11 +13,10 @@ module.exports = function (LoginManager) {
     let email = req.body.email
     let password = req.body.password
 
-    if(email === undefined || password === undefined) {
-
-      res.status(400).send("A username or Password was not specified")
+    if (email === undefined || password === undefined) {
+      res.status(400).send('A username or Password was not specified')
     } else {
-      LoginManager.login(email,password,res)
+      LoginManager.login(email, password, res)
     }
   })
 
