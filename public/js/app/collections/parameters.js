@@ -1,15 +1,14 @@
 define(function (require) {
-  'use strict'
 
-  const $ = require('jquery')
+  "use strict";
 
-  const _ = require('underscore')
-
-  const Backbone = require('backbone')
-
-  const Parameter = require('app/models/parameter')
+  var $                   = require('jquery'),
+      _                   = require('underscore'),
+      Backbone            = require('backbone'),
+      Parameter           = require('app/models/parameter');
 
   return Backbone.Collection.extend({
-    model: Parameter
-  })
-})
+    model: Parameter,
+  });
+
+});

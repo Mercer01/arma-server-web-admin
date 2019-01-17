@@ -1,53 +1,48 @@
 define(function (require) {
-  'use strict'
 
-  const $ = require('jquery')
+  "use strict";
 
-  const _ = require('underscore')
-
-  const Backbone = require('backbone')
-
-  const Marionette = require('marionette')
-
-  const UploadView = require('app/views/missions/upload')
-
-  const WorkshopView = require('app/views/missions/workshop')
-
-  const ListView = require('app/views/missions/list')
-
-  const tpl = require('text!tpl/missions/index.html')
+  var $                   = require('jquery'),
+      _                   = require('underscore'),
+      Backbone            = require('backbone'),
+      Marionette          = require('marionette'),
+      UploadView          = require('app/views/missions/upload'),
+      WorkshopView        = require('app/views/missions/workshop'),
+      ListView            = require('app/views/missions/list'),
+      tpl                 = require('text!tpl/missions/index.html');
 
   return Marionette.LayoutView.extend({
     template: _.template(tpl),
 
     regions: {
-      uploadView: '#upload',
-      workshopView: '#workshop',
-      listView: '#list'
+      uploadView: "#upload",
+      workshopView: "#workshop",
+      listView: "#list",
     },
 
     events: {
-      'click #refresh': 'refresh'
+      "click #refresh": "refresh",
     },
 
-    onRender: function () {
-      this.uploadView.show(new UploadView())
-      this.workshopView.show(new WorkshopView())
-      this.listView.show(new ListView({ collection: this.options.missions }))
+    onRender: function() {
+      this.uploadView.show(new UploadView());
+      this.workshopView.show(new WorkshopView());
+      this.listView.show(new ListView({collection: this.options.missions}));
     },
 
     refresh: function (event) {
-      event.preventDefault()
+      event.preventDefault();
       $.ajax({
-        url: '/api/missions/refresh',
+        url: "/api/missions/refresh",
         type: 'POST',
         success: function (resp) {
 
         },
         error: function (resp) {
 
-        }
-      })
-    }
-  })
-})
+        },
+      });
+    },
+  });
+
+});

@@ -1,27 +1,25 @@
 define(function (require) {
-  'use strict'
 
-  const $ = require('jquery')
+  "use strict";
 
-  const _ = require('underscore')
-
-  const Backbone = require('backbone')
-
-  const Marionette = require('marionette')
-
-  const tpl = require('text!tpl/settings.html')
+  var $                   = require('jquery'),
+      _                   = require('underscore'),
+      Backbone            = require('backbone'),
+      Marionette          = require('marionette'),
+      tpl                 = require('text!tpl/settings.html');
 
   return Marionette.ItemView.extend({
     template: _.template(tpl),
 
     modelEvents: {
-      'change': 'render'
+      'change': 'render',
     },
 
     templateHelpers: {
-      isTypeChecked: function (type) {
-        return this.type === type ? 'checked' : ''
-      }
-    }
-  })
-})
+      isTypeChecked: function(type) {
+        return this.type === type ? 'checked' : '';
+      },
+    },
+  });
+
+});

@@ -1,54 +1,47 @@
 define(function (require) {
-  'use strict'
 
-  const $ = require('jquery')
+  "use strict";
 
-  const _ = require('underscore')
+  var $                   = require('jquery'),
+      _                   = require('underscore'),
+      Backbone            = require('backbone'),
+      Marionette          = require('marionette'),
+      Server              = require('app/models/server'),
+      AddServerView       = require('app/views/servers/form'),
+      EmptyView           = require('app/views/servers/empty'),
+      ListItemView        = require('app/views/servers/list_item'),
+      tpl                 = require('text!tpl/servers/list.html'),
 
-  const Backbone = require('backbone')
-
-  const Marionette = require('marionette')
-
-  const Server = require('app/models/server')
-
-  const AddServerView = require('app/views/servers/form')
-
-  const EmptyView = require('app/views/servers/empty')
-
-  const ListItemView = require('app/views/servers/list_item')
-
-  const tpl = require('text!tpl/servers/list.html')
-
-  const template = _.template(tpl)
+      template = _.template(tpl);
 
   return Marionette.CompositeView.extend({
     childView: ListItemView,
-    childViewContainer: 'tbody',
+    childViewContainer: "tbody",
     template: template,
 
     emptyView: EmptyView,
 
     events: {
-      'click #add-server': 'addServer'
+      "click #add-server": "addServer"
     },
 
-    buildChildView: function (item, ChildViewType, childViewOptions) {
+    buildChildView: function(item, ChildViewType, childViewOptions){
       // build the final list of options for the item view type
-      let options = _.extend({ model: item }, childViewOptions)
+      var options = _.extend({model: item}, childViewOptions);
 
       if (ChildViewType == EmptyView) {
-        options = _.extend({ servers: this.collection }, options)
+        options = _.extend({servers: this.collection}, options);
       }
 
       // create the item view instance
-      const view = new ChildViewType(options)
+      var view = new ChildViewType(options);
       // return it
-      return view
+      return view;
     },
 
     addServer: function () {
-      const view = new AddServerView({ model: new Server(), servers: this.collection })
+      var view = new AddServerView({model: new Server(), servers: this.collection});
       new Backbone.BootstrapModal({ content: view, servers: this.collection }).open()
-    }
-  })
-})
+    },
+  });
+});

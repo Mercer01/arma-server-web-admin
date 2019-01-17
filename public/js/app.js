@@ -19,7 +19,7 @@ require.config({
       exports: 'Backbone'
     },
     'backbone.babysitter': {
-      deps: ['backbone']
+      deps: ['backbone'],
     },
     'backbone.bootstrap-modal': {
       deps: ['backbone', 'bootstrap']
@@ -44,8 +44,8 @@ require.config({
       exports: '_'
     }
   }
-})
+});
 
 require(['jquery', 'bootstrap', 'backbone', 'app/router'], function ($, Bootstrap, Backbone, Router) {
-  const router = new Router()
-})
+  var router = new Router();
+});

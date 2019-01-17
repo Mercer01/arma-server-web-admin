@@ -1,42 +1,39 @@
 define(function (require) {
-  'use strict'
 
-  const $ = require('jquery')
+  "use strict";
 
-  const _ = require('underscore')
+  var $                   = require('jquery'),
+      _                   = require('underscore'),
+      Backbone            = require('backbone'),
+      Marionette          = require('marionette'),
+      tpl                 = require('text!tpl/servers/missions/rotation/list_item.html'),
 
-  const Backbone = require('backbone')
-
-  const Marionette = require('marionette')
-
-  const tpl = require('text!tpl/servers/missions/rotation/list_item.html')
-
-  const template = _.template(tpl)
+      template = _.template(tpl);
 
   return Marionette.ItemView.extend({
-    tagName: 'tr',
+    tagName: "tr",
     template: template,
 
     events: {
-      'click button.delete': 'delete',
-      'change select#difficulty': 'changed',
-      'change input#name': 'changed'
+      "click button.delete": "delete",
+      "change select#difficulty": "changed",
+      "change input#name": "changed",
     },
 
     changed: function (e) {
-      const val = $(e.target).val()
-      this.model.set(e.target.id, val)
+      var val = $(e.target).val();
+      this.model.set(e.target.id, val);
     },
 
     delete: function (e) {
-      e.preventDefault()
-      this.model.destroy()
+      e.preventDefault();
+      this.model.destroy();
     },
 
-    onRender: function () {
-      const difficulty = this.model.get('difficulty')
-      const $option = this.$el.find('#difficulty option[value=\'' + difficulty + '\']')
-      $option.attr('selected', 'selected')
-    }
-  })
-})
+    onRender: function() {
+      var difficulty = this.model.get('difficulty');
+      var $option = this.$el.find("#difficulty option[value='" + difficulty + "']");
+      $option.attr("selected", "selected");
+    },
+  });
+});

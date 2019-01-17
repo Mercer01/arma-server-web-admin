@@ -11,8 +11,8 @@ function login() {
 		}
 
 	}).then(data => {
-			console.log(data)
-			// window.location.href = "/"
+		console.log(data)
+		// window.location.href = "/"
 	}).catch(error => {
 		console.error(error)
 	})
