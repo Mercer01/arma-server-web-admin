@@ -2,10 +2,10 @@ define(function (require) {
 
   "use strict";
 
-  var $                   = require('jquery'),
-      _                   = require('underscore'),
-      Backbone            = require('backbone'),
-      Mission             = require('app/models/mission');
+  const $ = require('jquery'),
+    _ = require('underscore'),
+    Backbone = require('backbone'),
+    Mission = require('app/models/mission')
 
   return Backbone.Collection.extend({
     comparator: 'name',

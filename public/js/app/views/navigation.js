@@ -2,14 +2,14 @@ define(function (require) {
 
   "use strict";
 
-  var $                   = require('jquery'),
-      _                   = require('underscore'),
-      Backbone            = require('backbone'),
-      Marionette          = require('marionette'),
-      BootstrapModal      = require('backbone.bootstrap-modal'),
-      ServersListView     = require('app/views/navigation/servers/list'),
-      SettingsView        = require('app/views/settings'),
-      tpl                 = require('text!tpl/navigation.html');
+  const $ = require('jquery'),
+    _ = require('underscore'),
+    Backbone = require('backbone'),
+    Marionette = require('marionette'),
+    BootstrapModal = require('backbone.bootstrap-modal'),
+    ServersListView = require('app/views/navigation/servers/list'),
+    SettingsView = require('app/views/settings'),
+    tpl = require('text!tpl/navigation.html')
 
   return Marionette.ItemView.extend({
     template: _.template(tpl),
@@ -31,7 +31,7 @@ define(function (require) {
 
     settings: function (event) {
       event.preventDefault();
-      var view = new SettingsView({ model: this.settings });
+      const view = new SettingsView({ model: this.settings })
       new Backbone.BootstrapModal({ content: view, animate: true, cancelText: false }).open();
     }
   });

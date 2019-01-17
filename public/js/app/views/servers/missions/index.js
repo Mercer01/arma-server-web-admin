@@ -2,14 +2,14 @@ define(function (require) {
 
   "use strict";
 
-  var $                   = require('jquery'),
-      _                   = require('underscore'),
-      Backbone            = require('backbone'),
-      Marionette          = require('marionette'),
-      MissionRotations    = require('app/collections/mission_rotations'),
-      AvailableListView   = require('app/views/servers/missions/available/list'),
-      RotationListView    = require('app/views/servers/missions/rotation/list'),
-      tpl                 = require('text!tpl/servers/missions/index.html');
+  const $ = require('jquery'),
+    _ = require('underscore'),
+    Backbone = require('backbone'),
+    Marionette = require('marionette'),
+    MissionRotations = require('app/collections/mission_rotations'),
+    AvailableListView = require('app/views/servers/missions/available/list'),
+    RotationListView = require('app/views/servers/missions/rotation/list'),
+    tpl = require('text!tpl/servers/missions/index.html')
 
   return Marionette.LayoutView.extend({
     template: _.template(tpl),
@@ -28,7 +28,7 @@ define(function (require) {
 
       this.rotationCollection = new MissionRotations(this.model.get('missions'));
 
-      var self = this;
+      const self = this
 
       this.availableListView = new AvailableListView({collection: this.missions});
       this.availableListView.on('add', function (model) {

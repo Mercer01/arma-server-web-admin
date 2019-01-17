@@ -2,12 +2,12 @@ define(function (require) {
 
   "use strict";
 
-  var $                   = require('jquery'),
-      _                   = require('underscore'),
-      Backbone            = require('backbone'),
-      Marionette          = require('marionette'),
-      swal                = require('sweet-alert'),
-      tpl                 = require('text!tpl/servers/info.html');
+  const $ = require('jquery'),
+    _ = require('underscore'),
+    Backbone = require('backbone'),
+    Marionette = require('marionette'),
+    swal = require('sweet-alert'),
+    tpl = require('text!tpl/servers/info.html')
 
   return Marionette.LayoutView.extend({
     template: _.template(tpl),
@@ -18,7 +18,7 @@ define(function (require) {
     },
 
     start: function (event) {
-      var self = this;
+      const self = this
       event.preventDefault();
       $.ajax({
         url: "/api/servers/" + this.model.get('id') + "/start",
@@ -32,7 +32,7 @@ define(function (require) {
     },
 
     stop: function (event) {
-      var self = this;
+      const self = this
       event.preventDefault();
       sweetAlert({
         title: "Are you sure?",

@@ -2,14 +2,14 @@ define(function (require) {
 
   "use strict";
 
-  var $                   = require('jquery'),
-      _                   = require('underscore'),
-      Backbone            = require('backbone'),
-      Marionette          = require('marionette'),
-      Mods                = require('app/collections/mods'),
-      ModsListView        = require('app/views/mods/list'),
-      ListItemView        = require('app/views/servers/mods/list_item'),
-      tpl                 = require('text!tpl/servers/mods/list.html');
+  const $ = require('jquery'),
+    _ = require('underscore'),
+    Backbone = require('backbone'),
+    Marionette = require('marionette'),
+    Mods = require('app/collections/mods'),
+    ModsListView = require('app/views/mods/list'),
+    ListItemView = require('app/views/servers/mods/list_item'),
+    tpl = require('text!tpl/servers/mods/list.html')
 
   return ModsListView.extend({
     childView: ListItemView,
@@ -21,8 +21,8 @@ define(function (require) {
     },
 
     buildChildView: function(item, ChildViewType, childViewOptions){
-      var options = _.extend({model: item, server: this.options.server}, childViewOptions);
-      var view = new ChildViewType(options);
+      const options = _.extend({ model: item, server: this.options.server }, childViewOptions)
+      const view = new ChildViewType(options)
       return view;
     },
 

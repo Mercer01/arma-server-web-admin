@@ -2,14 +2,14 @@ define(function (require) {
 
   "use strict";
 
-  var $                   = require('jquery'),
-      _                   = require('underscore'),
-      Backbone            = require('backbone'),
-      Marionette          = require('marionette'),
-      Parameter           = require('app/models/parameter'),
-      Parameters          = require('app/collections/parameters'),
-      ListItemView        = require('app/views/servers/parameters/list_item'),
-      tpl                 = require('text!tpl/servers/parameters/list.html');
+  const $ = require('jquery'),
+    _ = require('underscore'),
+    Backbone = require('backbone'),
+    Marionette = require('marionette'),
+    Parameter = require('app/models/parameter'),
+    Parameters = require('app/collections/parameters'),
+    ListItemView = require('app/views/servers/parameters/list_item'),
+    tpl = require('text!tpl/servers/parameters/list.html')
 
   return Marionette.CompositeView.extend({
     childView: ListItemView,

@@ -2,11 +2,11 @@ define(function (require) {
 
   "use strict";
 
-  var $                   = require('jquery'),
-      _                   = require('underscore'),
-      Backbone            = require('backbone'),
-      Marionette          = require('marionette'),
-      tpl                 = require('text!tpl/servers/empty.html');
+  const $ = require('jquery'),
+    _ = require('underscore'),
+    Backbone = require('backbone'),
+    Marionette = require('marionette'),
+    tpl = require('text!tpl/servers/empty.html')
 
   return Marionette.ItemView.extend({
     tagName: "tr",

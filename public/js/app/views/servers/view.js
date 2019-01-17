@@ -2,18 +2,18 @@ define(function (require) {
 
   "use strict";
 
-  var $                   = require('jquery'),
-      _                   = require('underscore'),
-      Backbone            = require('backbone'),
-      Marionette          = require('marionette'),
-      Mods                = require('app/collections/mods'),
-      FormView            = require('app/views/servers/form'),
-      InfoView            = require('app/views/servers/info'),
-      MissionsView        = require('app/views/servers/missions/index'),
-      ModsListView        = require('app/views/servers/mods/list'),
-      ParametersListView  = require('app/views/servers/parameters/list'),
-      PlayersView         = require('app/views/servers/players'),
-      tpl                 = require('text!tpl/servers/view.html');
+  const $ = require('jquery'),
+    _ = require('underscore'),
+    Backbone = require('backbone'),
+    Marionette = require('marionette'),
+    Mods = require('app/collections/mods'),
+    FormView = require('app/views/servers/form'),
+    InfoView = require('app/views/servers/info'),
+    MissionsView = require('app/views/servers/missions/index'),
+    ModsListView = require('app/views/servers/mods/list'),
+    ParametersListView = require('app/views/servers/parameters/list'),
+    PlayersView = require('app/views/servers/players'),
+    tpl = require('text!tpl/servers/view.html')
 
   return Marionette.LayoutView.extend({
     template: _.template(tpl),
@@ -60,15 +60,15 @@ define(function (require) {
 
     save: function (e) {
       e.preventDefault();
-      var self = this;
-      var oldId = this.model.get('id');
-      var data = this.settingsView.currentView.serialize();
+      const self = this
+      const oldId = this.model.get('id')
+      const data = this.settingsView.currentView.serialize()
       _.extend(data, this.missionsView.currentView.serialize());
       _.extend(data, this.modsView.currentView.serialize());
       _.extend(data, this.parametersView.currentView.serialize());
       this.model.save(data, {
         success: function() {
-          var newId = self.model.get('id');
+          const newId = self.model.get('id')
           if (oldId != newId) {
             Backbone.history.navigate('#servers/' + newId, true);
           } else {

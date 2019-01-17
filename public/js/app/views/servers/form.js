@@ -2,11 +2,11 @@ define(function (require) {
 
   "use strict";
 
-  var $                   = require('jquery'),
-      _                   = require('underscore'),
-      Backbone            = require('backbone'),
-      Marionette          = require('marionette'),
-      tpl                 = require('text!tpl/servers/form.html');
+  const $ = require('jquery'),
+    _ = require('underscore'),
+    Backbone = require('backbone'),
+    Marionette = require('marionette'),
+    tpl = require('text!tpl/servers/form.html')
 
   return Marionette.ItemView.extend({
     template: _.template(tpl),
@@ -41,7 +41,7 @@ define(function (require) {
 
       this.model.set(this.serialize());
 
-      var self = this;
+      const self = this
 
       this.model.save({}, {
         success: function() {

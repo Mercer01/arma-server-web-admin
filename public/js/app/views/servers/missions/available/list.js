@@ -2,12 +2,12 @@ define(function (require) {
 
   "use strict";
 
-  var $                   = require('jquery'),
-      _                   = require('underscore'),
-      Backbone            = require('backbone'),
-      Marionette          = require('marionette'),
-      ListItemView        = require('app/views/servers/missions/available/list_item'),
-      tpl                 = require('text!tpl/servers/missions/available/list.html');
+  const $ = require('jquery'),
+    _ = require('underscore'),
+    Backbone = require('backbone'),
+    Marionette = require('marionette'),
+    ListItemView = require('app/views/servers/missions/available/list_item'),
+    tpl = require('text!tpl/servers/missions/available/list.html')
 
   return Marionette.CompositeView.extend({
     childView: ListItemView,
@@ -15,9 +15,9 @@ define(function (require) {
     template: _.template(tpl),
 
     buildChildView: function(item, ChildViewType, childViewOptions){
-      var self = this;
-      var options = _.extend({model: item}, childViewOptions);
-      var view = new ChildViewType(options);
+      const self = this
+      const options = _.extend({ model: item }, childViewOptions)
+      const view = new ChildViewType(options)
       view.on('add', function (model) {
         self.trigger('add', model);
       });

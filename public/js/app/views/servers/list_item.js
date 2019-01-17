@@ -2,14 +2,14 @@ define(function (require) {
 
   "use strict";
 
-  var $                   = require('jquery'),
-      _                   = require('underscore'),
-      Backbone            = require('backbone'),
-      Marionette          = require('marionette'),
-      swal                = require('sweet-alert'),
-      tpl                 = require('text!tpl/servers/list_item.html'),
+  const $ = require('jquery'),
+    _ = require('underscore'),
+    Backbone = require('backbone'),
+    Marionette = require('marionette'),
+    swal = require('sweet-alert'),
+    tpl = require('text!tpl/servers/list_item.html'),
 
-      template = _.template(tpl);
+    template = _.template(tpl)
 
   return Marionette.ItemView.extend({
     tagName: "tr",
@@ -25,14 +25,14 @@ define(function (require) {
     },
 
     clone: function (e) {
-      var title = this.model.get('title') + ' Clone';
-      var clone = this.model.clone();
+      const title = this.model.get('title') + ' Clone'
+      const clone = this.model.clone()
       clone.set({id: null, title: title});
       clone.save();
     },
 
     delete: function (event) {
-      var self = this;
+      const self = this
       sweetAlert({
         title: "Are you sure?",
         text: "Your server configuration will be deleted!",

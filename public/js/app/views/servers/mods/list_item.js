@@ -2,14 +2,14 @@ define(function (require) {
 
   "use strict";
 
-  var $                   = require('jquery'),
-      _                   = require('underscore'),
-      Backbone            = require('backbone'),
-      Marionette          = require('marionette'),
-      ModListItemView     = require('app/views/mods/list_item'),
-      tpl                 = require('text!tpl/servers/mods/list_item.html'),
+  const $ = require('jquery'),
+    _ = require('underscore'),
+    Backbone = require('backbone'),
+    Marionette = require('marionette'),
+    ModListItemView = require('app/views/mods/list_item'),
+    tpl = require('text!tpl/servers/mods/list_item.html'),
 
-      template = _.template(tpl);
+    template = _.template(tpl)
 
   return ModListItemView.extend({
     tagName: "tr",

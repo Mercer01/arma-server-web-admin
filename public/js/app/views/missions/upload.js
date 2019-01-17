@@ -2,14 +2,14 @@ define(function (require) {
 
   "use strict";
 
-  var $                   = require('jquery'),
-      _                   = require('underscore'),
-      Backbone            = require('backbone'),
-      Marionette          = require('marionette'),
-      Ladda               = require('ladda'),
-      IframeTransport     = require('jquery.iframe-transport'),
-      Mission             = require('app/models/mission'),
-      tpl                 = require('text!tpl/missions/upload.html');
+  const $ = require('jquery'),
+    _ = require('underscore'),
+    Backbone = require('backbone'),
+    Marionette = require('marionette'),
+    Ladda = require('ladda'),
+    IframeTransport = require('jquery.iframe-transport'),
+    Mission = require('app/models/mission'),
+    tpl = require('text!tpl/missions/upload.html')
 
   return Marionette.ItemView.extend({
     template: _.template(tpl),
@@ -19,11 +19,11 @@ define(function (require) {
     },
 
     submit: function () {
-      var self = this;
-      var $form = this.$el.find('form');
+      const self = this
+      const $form = this.$el.find('form')
 
-      var $uploadBtn = $form.find('button[type=submit]');
-      var laddaBtn = Ladda.create($uploadBtn.get(0));
+      const $uploadBtn = $form.find('button[type=submit]')
+      const laddaBtn = Ladda.create($uploadBtn.get(0))
       laddaBtn.start();
 
       $.ajax("/api/missions", {

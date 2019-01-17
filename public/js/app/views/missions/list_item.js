@@ -2,14 +2,14 @@ define(function (require) {
 
   "use strict";
 
-  var $                   = require('jquery'),
-      _                   = require('underscore'),
-      Backbone            = require('backbone'),
-      Marionette          = require('marionette'),
-      swal                = require('sweet-alert'),
-      tpl                 = require('text!tpl/missions/list_item.html'),
+  const $ = require('jquery'),
+    _ = require('underscore'),
+    Backbone = require('backbone'),
+    Marionette = require('marionette'),
+    swal = require('sweet-alert'),
+    tpl = require('text!tpl/missions/list_item.html'),
 
-      template = _.template(tpl);
+    template = _.template(tpl)
 
   return Marionette.ItemView.extend({
     tagName: "tr",
@@ -20,7 +20,7 @@ define(function (require) {
     },
 
     deleteMission: function (event) {
-      var self = this;
+      const self = this
       sweetAlert({
         title: "Are you sure?",
         text: "The mission will be deleted from the server!",
