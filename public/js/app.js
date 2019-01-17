@@ -44,8 +44,8 @@ require.config({
       exports: '_'
     }
   }
-});
+})
 
 require(['jquery', 'bootstrap', 'backbone', 'app/router'], function ($, Bootstrap, Backbone, Router) {
-  var router = new Router();
-});
+  var router = new Router()
+})
