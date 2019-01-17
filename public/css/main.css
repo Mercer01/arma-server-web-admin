@@ -498,18 +498,28 @@ iframe {
 }
 
 .email-symbol {
-    height: 20px;
-    width: 20px;
     background: url("../images/icons/email.svg");
-    background-size: 20px 20px;
-    display: block;
 }
 
 .lock-symbol {
+    background: url("../images/icons/lock.svg");
+}
+
+.symbol {
     height: 20px;
     width: 20px;
-    background: url("../images/icons/lock.svg");
     background-size: 20px 20px;
     display: block;
 }
 
+.symbol-input {
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    pointer-events: none;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    display: flex;
+    padding-left: 26px
+}
