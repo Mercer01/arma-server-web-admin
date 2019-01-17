@@ -49,9 +49,11 @@ define(function (require) {
       this.model.save({}, {
         success: function () {
           modal.close()
-          self.servers.fetch({ success: function () {
-            Backbone.history.navigate('#servers/' + self.model.get('id'), true)
-          } })
+          self.servers.fetch({
+            success: function () {
+              Backbone.history.navigate('#servers/' + self.model.get('id'), true)
+            }
+          })
         },
         error: function () {
           alert('Error :(')

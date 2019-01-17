@@ -39,24 +39,24 @@ define(function (require) {
       const self = this
       event.preventDefault()
       sweetAlert({
-        title: 'Are you sure?',
-        text: 'The server will stopped.',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonClass: 'btn-warning',
-        confirmButtonText: 'Yes, stop it!'
-      },
-      function () {
-        $.ajax({
-          url: '/api/servers/' + self.model.get('id') + '/stop',
-          type: 'POST',
-          success: function (resp) {
-            self.model.set('pid', resp.pid)
-            self.render()
-          },
-          error: $.noop
+          title: 'Are you sure?',
+          text: 'The server will stopped.',
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonClass: 'btn-warning',
+          confirmButtonText: 'Yes, stop it!'
+        },
+        function () {
+          $.ajax({
+            url: '/api/servers/' + self.model.get('id') + '/stop',
+            type: 'POST',
+            success: function (resp) {
+              self.model.set('pid', resp.pid)
+              self.render()
+            },
+            error: $.noop
+          })
         })
-      })
     }
   })
 })

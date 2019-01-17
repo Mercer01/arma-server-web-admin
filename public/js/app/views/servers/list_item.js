@@ -38,16 +38,16 @@ define(function (require) {
     delete: function (event) {
       const self = this
       sweetAlert({
-        title: 'Are you sure?',
-        text: 'Your server configuration will be deleted!',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonClass: 'btn-danger',
-        confirmButtonText: 'Yes, delete it!'
-      },
-      function () {
-        self.model.destroy()
-      })
+          title: 'Are you sure?',
+          text: 'Your server configuration will be deleted!',
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonClass: 'btn-danger',
+          confirmButtonText: 'Yes, delete it!'
+        },
+        function () {
+          self.model.destroy()
+        })
     },
 
     serverUpdated: function (event) {
