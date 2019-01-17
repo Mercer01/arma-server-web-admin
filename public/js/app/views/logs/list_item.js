@@ -26,16 +26,16 @@ define(function (require) {
     deleteLog: function (event) {
       const self = this
       sweetAlert({
-        title: 'Are you sure?',
-        text: 'The log will be deleted from the server!',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonClass: 'btn-danger',
-        confirmButtonText: 'Yes, delete it!'
-      },
-      function () {
-        self.model.destroy()
-      })
+          title: 'Are you sure?',
+          text: 'The log will be deleted from the server!',
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonClass: 'btn-danger',
+          confirmButtonText: 'Yes, delete it!'
+        },
+        function () {
+          self.model.destroy()
+        })
     }
   })
 })

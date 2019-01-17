@@ -28,16 +28,16 @@ define(function (require) {
     deleteMod: function (event) {
       const self = this
       sweetAlert({
-        title: 'Are you sure?',
-        text: 'The mod will be deleted from the server!',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonClass: 'btn-danger',
-        confirmButtonText: 'Yes, delete it!'
-      },
-      function () {
-        self.model.destroy()
-      })
+          title: 'Are you sure?',
+          text: 'The mod will be deleted from the server!',
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonClass: 'btn-danger',
+          confirmButtonText: 'Yes, delete it!'
+        },
+        function () {
+          self.model.destroy()
+        })
     }
   })
 })
