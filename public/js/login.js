@@ -17,4 +17,4 @@ function login () {
   })
 }
 
-document.getElementById('loginbtn').addEventListener('click', login())
+document.getElementById('loginbtn').addEventListener('click', login)
