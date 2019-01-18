@@ -6,7 +6,7 @@ const serveStatic = require('serve-static')
 const webpack = require('webpack')
 const webpackMiddleware = require('webpack-dev-middleware')
 const cookie = require('cookie-parser')
-const compression = require("compression")
+const compression = require('compression')
 
 const config = require('./config')
 const webpackConfig = require('./webpack.config')
@@ -39,18 +39,23 @@ app.use(cookie())
 morgan.token('user', function (req) { return req.auth ? req.auth.user : 'anon' })
 app.use(morgan(config.logFormat || 'dev'))
 
-app.use(serveStatic(path.join(__dirname, 'public'), { maxAge: '60 seconds' }))
+app.get('/', async function (req, res) {
+  if (await login.is_signed_in(req) === false) {
+    res.redirect(302, '/login')
+  } else {
+    res.sendFile(path.join(__dirname, './public/index.html'))
+  }
+})
 
 app.get('/login', async function (req, res) {
-  console.log(req.cookies)
-  if (await login.is_signed_in(req) === false){
+  if (await login.is_signed_in(req) === false) {
     res.sendFile(path.join(__dirname, './public/login.html'))
+  } else {
+    res.redirect(302, '/')
   }
-  else{
-    res.redirect(302, "/")
-  }
-
 })
+
+app.use(serveStatic(path.join(__dirname, 'public'), { maxAge: '60 seconds' }))
 
 const logs = new Logs(config)
 
