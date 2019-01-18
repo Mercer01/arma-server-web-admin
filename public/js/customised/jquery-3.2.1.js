@@ -20,42 +20,43 @@
 
   'use strict'
 
-  const arr = []
+  var arr = []
 
-  const document = window.document
+  var document = window.document
 
-  const getProto = Object.getPrototypeOf
+  var getProto = Object.getPrototypeOf
 
-  const slice = arr.slice
+  var slice = arr.slice
 
-  const concat = arr.concat
+  var concat = arr.concat
 
-  const push = arr.push
+  var push = arr.push
 
-  const indexOf = arr.indexOf
+  var indexOf = arr.indexOf
 
-  const class2type = {}
+  var class2type = {}
 
-  const toString = class2type.toString
+  var toString = class2type.toString
 
-  const hasOwn = class2type.hasOwnProperty
+  var hasOwn = class2type.hasOwnProperty
 
-  const fnToString = hasOwn.toString
+  var fnToString = hasOwn.toString
 
-  const ObjectFunctionString = fnToString.call(Object)
+  var ObjectFunctionString = fnToString.call(Object)
 
-  const support = {}
+  var support = {}
 
   function DOMEval (code, doc) {
     doc = doc || document
 
-    const script = doc.createElement('script')
+    var script = doc.createElement('script')
 
     script.text = code
     doc.head.appendChild(script).parentNode.removeChild(script)
   }
 
-  const version = '3.2.1',
+  var
+    version = '3.2.1',
 
     jQuery = function (selector, context) {
 
@@ -94,7 +95,7 @@
 
     pushStack: function (elems) {
 
-      const ret = jQuery.merge(this.constructor(), elems)
+      var ret = jQuery.merge(this.constructor(), elems)
 
       ret.prevObject = this
 
@@ -124,7 +125,7 @@
     },
 
     eq: function (i) {
-      const len = this.length,
+      var len = this.length,
         j = +i + (i < 0 ? len : 0)
       return this.pushStack(j >= 0 && j < len ? [this[j]] : [])
     },
@@ -139,11 +140,11 @@
   }
 
   jQuery.extend = jQuery.fn.extend = function () {
-    let options, name, src, copy, copyIsArray, clone,
+    var options, name, src, copy, copyIsArray, clone,
       target = arguments[0] || {},
-      i = 1
-    const length = arguments.length
-    let deep = false
+      i = 1,
+      length = arguments.length,
+      deep = false
 
     if (typeof target === 'boolean') {
       deep = target
@@ -218,14 +219,14 @@
 
     isNumeric: function (obj) {
 
-      const type = jQuery.type(obj)
+      var type = jQuery.type(obj)
       return (type === 'number' || type === 'string') &&
 
         !isNaN(obj - parseFloat(obj))
     },
 
     isPlainObject: function (obj) {
-      let proto, Ctor
+      var proto, Ctor
 
       if (!obj || toString.call(obj) !== '[object Object]') {
         return false
@@ -243,7 +244,7 @@
 
     isEmptyObject: function (obj) {
 
-      let name
+      var name
 
       for (name in obj) {
         return false
@@ -270,7 +271,7 @@
     },
 
     each: function (obj, callback) {
-      let length, i = 0
+      var length, i = 0
 
       if (isArrayLike(obj)) {
         length = obj.length
@@ -297,7 +298,7 @@
     },
 
     makeArray: function (arr, results) {
-      const ret = results || []
+      var ret = results || []
 
       if (arr != null) {
         if (isArrayLike(Object(arr))) {
@@ -318,8 +319,8 @@
     },
 
     merge: function (first, second) {
-      const len = +second.length
-      let j = 0,
+      var len = +second.length,
+        j = 0,
         i = first.length
 
       for (; j < len; j++) {
@@ -332,10 +333,10 @@
     },
 
     grep: function (elems, callback, invert) {
-      let callbackInverse
-      const matches = []
-      let i = 0
-      const length = elems.length,
+      var callbackInverse,
+        matches = [],
+        i = 0,
+        length = elems.length,
         callbackExpect = !invert
 
       for (; i < length; i++) {
@@ -349,9 +350,9 @@
     },
 
     map: function (elems, callback, arg) {
-      let length, value,
-        i = 0
-      const ret = []
+      var length, value,
+        i = 0,
+        ret = []
 
       if (isArrayLike(elems)) {
         length = elems.length
@@ -379,7 +380,7 @@
     guid: 1,
 
     proxy: function (fn, context) {
-      let tmp, args, proxy
+      var tmp, args, proxy
 
       if (typeof context === 'string') {
         tmp = fn[context]
@@ -417,7 +418,7 @@
 
   function isArrayLike (obj) {
 
-    const length = !!obj && 'length' in obj && obj.length,
+    var length = !!obj && 'length' in obj && obj.length,
       type = jQuery.type(obj)
 
     if (type === 'function' || jQuery.isWindow(obj)) {
@@ -428,11 +429,11 @@
       typeof length === 'number' && length > 0 && (length - 1) in obj
   }
 
-  const Sizzle =
+  var Sizzle =
 
     (function (window) {
 
-      let i,
+      var i,
         support,
         Expr,
         getText,
@@ -451,8 +452,9 @@
         rbuggyQSA,
         rbuggyMatches,
         matches,
-        contains
-      const expando = 'sizzle' + 1 * new Date(),
+        contains,
+
+        expando = 'sizzle' + 1 * new Date(),
         preferredDoc = window.document,
         dirruns = 0,
         done = 0,
@@ -466,16 +468,16 @@
           return 0
         },
 
-        hasOwn = ({}).hasOwnProperty
-      let arr = []
-      const pop = arr.pop,
-        push_native = arr.push
-      let push = arr.push
-      const slice = arr.slice,
+        hasOwn = ({}).hasOwnProperty,
+        arr = [],
+        pop = arr.pop,
+        push_native = arr.push,
+        push = arr.push,
+        slice = arr.slice,
 
         indexOf = function (list, elem) {
-          let i = 0
-          const len = list.length
+          var i = 0,
+            len = list.length
           for (; i < len; i++) {
             if (list[i] === elem) {
               return i
@@ -543,7 +545,7 @@
 
         runescape = new RegExp('\\\\([\\da-f]{1,6}' + whitespace + '?|(' + whitespace + ')|.)', 'ig'),
         funescape = function (_, escaped, escapedWhitespace) {
-          const high = '0x' + escaped - 0x10000
+          var high = '0x' + escaped - 0x10000
 
           return high !== high || escapedWhitespace ?
             escaped :
@@ -595,7 +597,7 @@
             } :
 
             function (target, els) {
-              let j = target.length,
+              var j = target.length,
                 i = 0
 
               while ((target[j++] = els[i++])) {}
@@ -605,9 +607,10 @@
       }
 
       function Sizzle (selector, context, results, seed) {
-        let m, i, elem, nid, match, groups, newSelector,
-          newContext = context && context.ownerDocument
-        const nodeType = context ? context.nodeType : 9
+        var m, i, elem, nid, match, groups, newSelector,
+          newContext = context && context.ownerDocument,
+
+          nodeType = context ? context.nodeType : 9
 
         results = results || []
 
@@ -712,7 +715,7 @@
       }
 
       function createCache () {
-        const keys = []
+        var keys = []
 
         function cache (key, value) {
 
@@ -732,7 +735,7 @@
       }
 
       function assert (fn) {
-        let el = document.createElement('fieldset')
+        var el = document.createElement('fieldset')
 
         try {
           return !!fn(el)
@@ -749,8 +752,8 @@
       }
 
       function addHandle (attrs, handler) {
-        const arr = attrs.split('|')
-        let i = arr.length
+        var arr = attrs.split('|'),
+          i = arr.length
 
         while (i--) {
           Expr.attrHandle[arr[i]] = handler
@@ -758,9 +761,9 @@
       }
 
       function siblingCheck (a, b) {
-        let cur = b && a
-        const diff = cur && a.nodeType === 1 && b.nodeType === 1 &&
-          a.sourceIndex - b.sourceIndex
+        var cur = b && a,
+          diff = cur && a.nodeType === 1 && b.nodeType === 1 &&
+            a.sourceIndex - b.sourceIndex
 
         if (diff) {
           return diff
@@ -779,14 +782,14 @@
 
       function createInputPseudo (type) {
         return function (elem) {
-          const name = elem.nodeName.toLowerCase()
+          var name = elem.nodeName.toLowerCase()
           return name === 'input' && elem.type === type
         }
       }
 
       function createButtonPseudo (type) {
         return function (elem) {
-          const name = elem.nodeName.toLowerCase()
+          var name = elem.nodeName.toLowerCase()
           return (name === 'input' || name === 'button') && elem.type === type
         }
       }
@@ -827,9 +830,9 @@
         return markFunction(function (argument) {
           argument = +argument
           return markFunction(function (seed, matches) {
-            let j
-            const matchIndexes = fn([], seed.length, argument)
-            let i = matchIndexes.length
+            var j,
+              matchIndexes = fn([], seed.length, argument),
+              i = matchIndexes.length
 
             while (i--) {
               if (seed[(j = matchIndexes[i])]) {
@@ -848,13 +851,13 @@
 
       isXML = Sizzle.isXML = function (elem) {
 
-        const documentElement = elem && (elem.ownerDocument || elem).documentElement
+        var documentElement = elem && (elem.ownerDocument || elem).documentElement
         return documentElement ? documentElement.nodeName !== 'HTML' : false
       }
 
       setDocument = Sizzle.setDocument = function (node) {
-        let hasCompare, subWindow
-        const doc = node ? node.ownerDocument || node : preferredDoc
+        var hasCompare, subWindow,
+          doc = node ? node.ownerDocument || node : preferredDoc
 
         if (doc === document || doc.nodeType !== 9 || !doc.documentElement) {
           return document
@@ -894,22 +897,22 @@
 
         if (support.getById) {
           Expr.filter['ID'] = function (id) {
-            const attrId = id.replace(runescape, funescape)
+            var attrId = id.replace(runescape, funescape)
             return function (elem) {
               return elem.getAttribute('id') === attrId
             }
           }
           Expr.find['ID'] = function (id, context) {
             if (typeof context.getElementById !== 'undefined' && documentIsHTML) {
-              const elem = context.getElementById(id)
+              var elem = context.getElementById(id)
               return elem ? [elem] : []
             }
           }
         } else {
           Expr.filter['ID'] = function (id) {
-            const attrId = id.replace(runescape, funescape)
+            var attrId = id.replace(runescape, funescape)
             return function (elem) {
-              const node = typeof elem.getAttributeNode !== 'undefined' &&
+              var node = typeof elem.getAttributeNode !== 'undefined' &&
                 elem.getAttributeNode('id')
               return node && node.value === attrId
             }
@@ -917,7 +920,7 @@
 
           Expr.find['ID'] = function (id, context) {
             if (typeof context.getElementById !== 'undefined' && documentIsHTML) {
-              let node, i, elems,
+              var node, i, elems,
                 elem = context.getElementById(id)
 
               if (elem) {
@@ -953,10 +956,11 @@
           } :
 
           function (tag, context) {
-            let elem
-            const tmp = []
-            let i = 0
-            const results = context.getElementsByTagName(tag)
+            var elem,
+              tmp = [],
+              i = 0,
+
+              results = context.getElementsByTagName(tag)
 
             if (tag === '*') {
               while ((elem = results[i++])) {
@@ -1013,7 +1017,7 @@
             el.innerHTML = '<a href=\'\' disabled=\'disabled\'></a>' +
               '<select disabled=\'disabled\'><option/></select>'
 
-            const input = document.createElement('input')
+            var input = document.createElement('input')
             input.setAttribute('type', 'hidden')
             el.appendChild(input).setAttribute('name', 'D')
 
@@ -1057,7 +1061,7 @@
 
         contains = hasCompare || rnative.test(docElem.contains) ?
           function (a, b) {
-            const adown = a.nodeType === 9 ? a.documentElement : a,
+            var adown = a.nodeType === 9 ? a.documentElement : a,
               bup = b && b.parentNode
             return a === bup || !!(bup && bup.nodeType === 1 && (
               adown.contains ?
@@ -1097,7 +1101,7 @@
           (!rbuggyQSA || !rbuggyQSA.test(expr))) {
 
           try {
-            const ret = matches.call(elem, expr)
+            var ret = matches.call(elem, expr)
 
             if (ret || support.disconnectedMatch ||
 
@@ -1124,10 +1128,11 @@
           setDocument(elem)
         }
 
-        const fn = Expr.attrHandle[name.toLowerCase()]
-        let val = fn && hasOwn.call(Expr.attrHandle, name.toLowerCase()) ?
-          fn(elem, name, !documentIsHTML) :
-          undefined
+        var fn = Expr.attrHandle[name.toLowerCase()],
+
+          val = fn && hasOwn.call(Expr.attrHandle, name.toLowerCase()) ?
+            fn(elem, name, !documentIsHTML) :
+            undefined
 
         return val !== undefined ?
           val :
@@ -1182,7 +1187,7 @@
         filter: {
 
           'TAG': function (nodeNameSelector) {
-            const nodeName = nodeNameSelector.replace(runescape, funescape).toLowerCase()
+            var nodeName = nodeNameSelector.replace(runescape, funescape).toLowerCase()
             return nodeNameSelector === '*' ?
               function () { return true } :
               function (elem) {
@@ -1191,7 +1196,7 @@
           },
 
           'CLASS': function (className) {
-            let pattern = classCache[className + ' ']
+            var pattern = classCache[className + ' ']
 
             return pattern ||
               (pattern = new RegExp('(^|' + whitespace + ')' + className + '(' + whitespace + '|$)')) &&
@@ -1202,7 +1207,7 @@
 
           'ATTR': function (name, operator, check) {
             return function (elem) {
-              let result = Sizzle.attr(elem, name)
+              var result = Sizzle.attr(elem, name)
 
               if (result == null) {
                 return operator === '!='
@@ -1246,7 +1251,7 @@
             }
             lang = lang.replace(runescape, funescape).toLowerCase()
             return function (elem) {
-              let elemLang
+              var elemLang
               do {
                 if ((elemLang = documentIsHTML ?
                   elem.lang :
@@ -1261,7 +1266,7 @@
           }),
 
           'target': function (elem) {
-            const hash = window.location && window.location.hash
+            var hash = window.location && window.location.hash
             return hash && hash.slice(1) === elem.id
           },
 
@@ -1278,7 +1283,7 @@
 
           'checked': function (elem) {
 
-            const nodeName = elem.nodeName.toLowerCase()
+            var nodeName = elem.nodeName.toLowerCase()
             return (nodeName === 'input' && !!elem.checked) || (nodeName === 'option' && !!elem.selected)
           },
 
@@ -1314,12 +1319,12 @@
           },
 
           'button': function (elem) {
-            const name = elem.nodeName.toLowerCase()
+            var name = elem.nodeName.toLowerCase()
             return name === 'input' && elem.type === 'button' || name === 'button'
           },
 
           'text': function (elem) {
-            let attr
+            var attr
             return elem.nodeName.toLowerCase() === 'input' &&
               elem.type === 'text' &&
 
@@ -1339,7 +1344,7 @@
           }),
 
           'even': createPositionalPseudo(function (matchIndexes, length) {
-            let i = 0
+            var i = 0
             for (; i < length; i += 2) {
               matchIndexes.push(i)
             }
@@ -1347,7 +1352,7 @@
           }),
 
           'odd': createPositionalPseudo(function (matchIndexes, length) {
-            let i = 1
+            var i = 1
             for (; i < length; i += 2) {
               matchIndexes.push(i)
             }
@@ -1355,7 +1360,7 @@
           }),
 
           'lt': createPositionalPseudo(function (matchIndexes, length, argument) {
-            let i = argument < 0 ? argument + length : argument
+            var i = argument < 0 ? argument + length : argument
             for (; --i >= 0;) {
               matchIndexes.push(i)
             }
@@ -1363,7 +1368,7 @@
           }),
 
           'gt': createPositionalPseudo(function (matchIndexes, length, argument) {
-            let i = argument < 0 ? argument + length : argument
+            var i = argument < 0 ? argument + length : argument
             for (; ++i < length;) {
               matchIndexes.push(i)
             }
@@ -1387,9 +1392,9 @@
       Expr.setFilters = new setFilters()
 
       tokenize = Sizzle.tokenize = function (selector, parseOnly) {
-        let matched, match, tokens, type,
-          soFar, groups, preFilters
-        const cached = tokenCache[selector + ' ']
+        var matched, match, tokens, type,
+          soFar, groups, preFilters,
+          cached = tokenCache[selector + ' ']
 
         if (cached) {
           return parseOnly ? 0 : cached.slice(0)
@@ -1448,9 +1453,9 @@
       }
 
       function toSelector (tokens) {
-        let i = 0
-        const len = tokens.length
-        let selector = ''
+        var i = 0,
+          len = tokens.length,
+          selector = ''
         for (; i < len; i++) {
           selector += tokens[i].value
         }
@@ -1458,7 +1463,7 @@
       }
 
       function addCombinator (matcher, combinator, base) {
-        const dir = combinator.dir,
+        var dir = combinator.dir,
           skip = combinator.next,
           key = skip || dir,
           checkNonElements = base && key === 'parentNode',
@@ -1476,8 +1481,8 @@
           } :
 
           function (elem, context, xml) {
-            let oldCache, uniqueCache, outerCache
-            const newCache = [dirruns, doneName]
+            var oldCache, uniqueCache, outerCache,
+              newCache = [dirruns, doneName]
 
             if (xml) {
               while ((elem = elem[dir])) {
@@ -1518,7 +1523,7 @@
       function elementMatcher (matchers) {
         return matchers.length > 1 ?
           function (elem, context, xml) {
-            let i = matchers.length
+            var i = matchers.length
             while (i--) {
               if (!matchers[i](elem, context, xml)) {
                 return false
@@ -1530,26 +1535,27 @@
       }
 
       function matcherFromTokens (tokens) {
-        let checkContext, matcher, j
-        const len = tokens.length,
+        var checkContext, matcher, j,
+          len = tokens.length,
           leadingRelative = Expr.relative[tokens[0].type],
-          implicitRelative = leadingRelative || Expr.relative[' ']
-        let i = leadingRelative ? 1 : 0
-        const matchContext = addCombinator(function (elem) {
+          implicitRelative = leadingRelative || Expr.relative[' '],
+          i = leadingRelative ? 1 : 0,
+
+          matchContext = addCombinator(function (elem) {
             return elem === checkContext
           }, implicitRelative, true),
           matchAnyContext = addCombinator(function (elem) {
             return indexOf(checkContext, elem) > -1
-          }, implicitRelative, true)
-        let matchers = [function (elem, context, xml) {
-          const ret = (!leadingRelative && (xml || context !== outermostContext)) || (
-            (checkContext = context).nodeType ?
-              matchContext(elem, context, xml) :
-              matchAnyContext(elem, context, xml))
+          }, implicitRelative, true),
+          matchers = [function (elem, context, xml) {
+            var ret = (!leadingRelative && (xml || context !== outermostContext)) || (
+              (checkContext = context).nodeType ?
+                matchContext(elem, context, xml) :
+                matchAnyContext(elem, context, xml))
 
-          checkContext = null
-          return ret
-        }]
+            checkContext = null
+            return ret
+          }]
 
         for (; i < len; i++) {
           if ((matcher = Expr.relative[tokens[i].type])) {
@@ -1584,15 +1590,15 @@
       }
 
       function matcherFromGroupMatchers (elementMatchers, setMatchers) {
-        const bySet = setMatchers.length > 0,
+        var bySet = setMatchers.length > 0,
           byElement = elementMatchers.length > 0,
           superMatcher = function (seed, context, xml, results, outermost) {
-            let elem, j, matcher,
+            var elem, j, matcher,
               matchedCount = 0,
-              i = '0'
-            const unmatched = seed && []
-            let setMatched = []
-            const contextBackup = outermostContext,
+              i = '0',
+              unmatched = seed && [],
+              setMatched = [],
+              contextBackup = outermostContext,
 
               elems = seed || byElement && Expr.find['TAG']('*', outermost),
 
@@ -1677,10 +1683,10 @@
       }
 
       compile = Sizzle.compile = function (selector, match) {
-        let i
-        const setMatchers = [],
-          elementMatchers = []
-        let cached = compilerCache[selector + ' ']
+        var i,
+          setMatchers = [],
+          elementMatchers = [],
+          cached = compilerCache[selector + ' ']
 
         if (!cached) {
 
@@ -1705,8 +1711,8 @@
       }
 
       select = Sizzle.select = function (selector, context, results, seed) {
-        let i, tokens, token, type, find
-        const compiled = typeof selector === 'function' && selector,
+        var i, tokens, token, type, find,
+          compiled = typeof selector === 'function' && selector,
           match = !seed && tokenize((selector = compiled.selector || selector))
 
         results = results || []
@@ -1803,7 +1809,7 @@
         return el.getAttribute('disabled') == null
       })) {
         addHandle(booleans, function (elem, name, isXML) {
-          let val
+          var val
           if (!isXML) {
             return elem[name] === true ? name.toLowerCase() :
               (val = elem.getAttributeNode(name)) && val.specified ?
@@ -1828,7 +1834,7 @@
   jQuery.escapeSelector = Sizzle.escape
 
   var dir = function (elem, dir, until) {
-    const matched = [],
+    var matched = [],
       truncate = until !== undefined
 
     while ((elem = elem[dir]) && elem.nodeType !== 9) {
@@ -1842,8 +1848,8 @@
     return matched
   }
 
-  const siblings = function (n, elem) {
-    const matched = []
+  var siblings = function (n, elem) {
+    var matched = []
 
     for (; n; n = n.nextSibling) {
       if (n.nodeType === 1 && n !== elem) {
@@ -1854,7 +1860,7 @@
     return matched
   }
 
-  const rneedsContext = jQuery.expr.match.needsContext
+  var rneedsContext = jQuery.expr.match.needsContext
 
   function nodeName (elem, name) {
 
@@ -1862,9 +1868,9 @@
 
   }
 
-  const rsingleTag = (/^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i)
+  var rsingleTag = (/^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i)
 
-  const risSimple = /^.[^:#\[\.,]*$/
+  var risSimple = /^.[^:#\[\.,]*$/
 
   function winnow (elements, qualifier, not) {
     if (jQuery.isFunction(qualifier)) {
@@ -1896,7 +1902,7 @@
   }
 
   jQuery.filter = function (expr, elems, not) {
-    const elem = elems[0]
+    var elem = elems[0]
 
     if (not) {
       expr = ':not(' + expr + ')'
@@ -1913,8 +1919,8 @@
 
   jQuery.fn.extend({
     find: function (selector) {
-      let i, ret
-      const len = this.length,
+      var i, ret,
+        len = this.length,
         self = this
 
       if (typeof selector !== 'string') {
@@ -1958,7 +1964,7 @@
     rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]+))$/,
 
     init = jQuery.fn.init = function (selector, context, root) {
-      let match, elem
+      var match, elem
 
       if (!selector) {
         return this
@@ -2039,7 +2045,7 @@
 
   rootjQuery = jQuery(document)
 
-  const rparentsprev = /^(?:parents|prev(?:Until|All))/,
+  var rparentsprev = /^(?:parents|prev(?:Until|All))/,
 
     guaranteedUnique = {
       children: true,
@@ -2050,11 +2056,11 @@
 
   jQuery.fn.extend({
     has: function (target) {
-      const targets = jQuery(target, this),
+      var targets = jQuery(target, this),
         l = targets.length
 
       return this.filter(function () {
-        let i = 0
+        var i = 0
         for (; i < l; i++) {
           if (jQuery.contains(this, targets[i])) {
             return true
@@ -2064,9 +2070,9 @@
     },
 
     closest: function (selectors, context) {
-      let cur,
-        i = 0
-      const l = this.length,
+      var cur,
+        i = 0,
+        l = this.length,
         matched = [],
         targets = typeof selectors !== 'string' && jQuery(selectors)
 
@@ -2128,7 +2134,7 @@
 
   jQuery.each({
     parent: function (elem) {
-      const parent = elem.parentNode
+      var parent = elem.parentNode
       return parent && parent.nodeType !== 11 ? parent : null
     },
     parents: function (elem) {
@@ -2174,7 +2180,7 @@
     }
   }, function (name, fn) {
     jQuery.fn[name] = function (until, selector) {
-      let matched = jQuery.map(this, fn, until)
+      var matched = jQuery.map(this, fn, until)
 
       if (name.slice(-5) !== 'Until') {
         selector = until
@@ -2198,10 +2204,10 @@
       return this.pushStack(matched)
     }
   })
-  const rnothtmlwhite = (/[^\x20\t\r\n\f]+/g)
+  var rnothtmlwhite = (/[^\x20\t\r\n\f]+/g)
 
   function createOptions (options) {
-    const object = {}
+    var object = {}
     jQuery.each(options.match(rnothtmlwhite) || [], function (_, flag) {
       object[flag] = true
     })
@@ -2214,7 +2220,8 @@
       createOptions(options) :
       jQuery.extend({}, options)
 
-    let firing,
+    var
+      firing,
 
       memory,
 
@@ -2226,8 +2233,9 @@
 
       queue = [],
 
-      firingIndex = -1
-    const fire = function () {
+      firingIndex = -1,
+
+      fire = function () {
 
         locked = locked || options.once
 
@@ -2381,7 +2389,7 @@
         deferred = {}
 
       jQuery.each(tuples, function (i, tuple) {
-        const list = tuple[2],
+        var list = tuple[2],
           stateString = tuple[5]
 
         promise[tuple[1]] = list.add
@@ -2419,7 +2427,7 @@
     },
 
   })
-  const readyList = jQuery.Deferred()
+  var readyList = jQuery.Deferred()
 
   jQuery.extend({
 
@@ -2463,10 +2471,10 @@
     window.addEventListener('load', completed)
   }
 
-  const access = function (elems, fn, key, value, chainable, emptyGet, raw) {
-    let i = 0
-    const len = elems.length
-    let bulk = key == null
+  var access = function (elems, fn, key, value, chainable, emptyGet, raw) {
+    var i = 0,
+      len = elems.length,
+      bulk = key == null
 
     if (jQuery.type(key) === 'object') {
       chainable = true
@@ -2516,7 +2524,7 @@
 
     return len ? fn(elems[0], key) : emptyGet
   }
-  const acceptData = function (owner) {
+  var acceptData = function (owner) {
 
     return owner.nodeType === 1 || owner.nodeType === 9 || !(+owner.nodeType)
   }
@@ -2531,7 +2539,7 @@
 
     cache: function (owner) {
 
-      let value = owner[this.expando]
+      var value = owner[this.expando]
 
       if (!value) {
         value = {}
@@ -2553,8 +2561,8 @@
       return value
     },
     set: function (owner, data, value) {
-      let prop
-      const cache = this.cache(owner)
+      var prop,
+        cache = this.cache(owner)
 
       if (typeof data === 'string') {
         cache[jQuery.camelCase(data)] = value
@@ -2586,8 +2594,8 @@
       return value !== undefined ? value : key
     },
     remove: function (owner, key) {
-      let i
-      const cache = owner[this.expando]
+      var i,
+        cache = owner[this.expando]
 
       if (cache === undefined) {
         return
@@ -2623,13 +2631,13 @@
       }
     },
     hasData: function (owner) {
-      const cache = owner[this.expando]
+      var cache = owner[this.expando]
       return cache !== undefined && !jQuery.isEmptyObject(cache)
     }
   }
-  const dataPriv = new Data()
+  var dataPriv = new Data()
 
-  const dataUser = new Data()
+  var dataUser = new Data()
   jQuery.extend({
     data: function (elem, name, data) {
       return dataUser.access(elem, name, data)
@@ -2638,8 +2646,8 @@
 
   jQuery.fn.extend({
     data: function (key, value) {
-      let i, name, data
-      const elem = this[0],
+      var i, name, data,
+        elem = this[0],
         attrs = elem && elem.attributes
 
       if (key === undefined) {
@@ -2672,7 +2680,7 @@
       }
 
       return access(this, function (value) {
-        let data
+        var data
 
         if (elem && value === undefined) {
 
@@ -2703,13 +2711,13 @@
     }
   })
 
-  const pnum = (/[+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|)/).source
+  var pnum = (/[+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|)/).source
 
-  const rcssNum = new RegExp('^(?:([+-])=|)(' + pnum + ')([a-z%]*)$', 'i')
+  var rcssNum = new RegExp('^(?:([+-])=|)(' + pnum + ')([a-z%]*)$', 'i')
 
-  const cssExpand = ['Top', 'Right', 'Bottom', 'Left']
+  var cssExpand = ['Top', 'Right', 'Bottom', 'Left']
 
-  const wrapMap = {
+  var wrapMap = {
 
     option: [1, '<select multiple=\'multiple\'>', '</select>'],
 
@@ -2726,9 +2734,9 @@
   wrapMap.tbody = wrapMap.tfoot = wrapMap.colgroup = wrapMap.caption = wrapMap.thead
   wrapMap.th = wrapMap.td
 
-  const rhtml = /<|&#?\w+;/
+  var rhtml = /<|&#?\w+;/;
   (function () {
-    const fragment = document.createDocumentFragment(),
+    var fragment = document.createDocumentFragment(),
       div = fragment.appendChild(document.createElement('div')),
       input = document.createElement('input')
 
@@ -2745,7 +2753,8 @@
   })()
   var documentElement = document.documentElement
 
-  const rkeyEvent = /^key/,
+  var
+    rkeyEvent = /^key/,
     rmouseEvent = /^(?:mouse|pointer|contextmenu|drag|drop)|click/,
     rtypenamespace = /^([^.]*)(?:\.(.+)|)/
 
@@ -2758,7 +2767,7 @@
   }
 
   function on (elem, types, selector, data, fn, one) {
-    let origFn, type
+    var origFn, type
 
     if (typeof types === 'object') {
 
@@ -2816,10 +2825,10 @@
 
     add: function (elem, types, handler, data, selector) {
 
-      let handleObjIn, eventHandle, tmp,
+      var handleObjIn, eventHandle, tmp,
         events, t, handleObj,
-        special, handlers, type, namespaces, origType
-      const elemData = dataPriv.get(elem)
+        special, handlers, type, namespaces, origType,
+        elemData = dataPriv.get(elem)
 
       if (!elemData) {
         return
@@ -2912,10 +2921,10 @@
 
     dispatch: function (nativeEvent) {
 
-      const event = jQuery.event.fix(nativeEvent)
+      var event = jQuery.event.fix(nativeEvent)
 
-      let i, j, ret, matched, handleObj, handlerQueue
-      const args = new Array(arguments.length),
+      var i, j, ret, matched, handleObj, handlerQueue,
+        args = new Array(arguments.length),
         handlers = (dataPriv.get(this, 'events') || {})[event.type] || [],
         special = jQuery.event.special[event.type] || {}
 
@@ -2967,10 +2976,10 @@
     },
 
     handlers: function (event, handlers) {
-      let i, handleObj, sel, matchedHandlers, matchedSelectors
-      const handlerQueue = [],
-        delegateCount = handlers.delegateCount
-      let cur = event.target
+      var i, handleObj, sel, matchedHandlers, matchedSelectors,
+        handlerQueue = [],
+        delegateCount = handlers.delegateCount,
+        cur = event.target
 
       if (delegateCount &&
 
@@ -3180,7 +3189,7 @@
     touches: true,
 
     which: function (event) {
-      const button = event.button
+      var button = event.button
 
       if (event.which == null && rkeyEvent.test(event.type)) {
         return event.charCode != null ? event.charCode : event.keyCode
@@ -3217,8 +3226,8 @@
       bindType: fix,
 
       handle: function (event) {
-        let ret
-        const target = this,
+        var ret,
+          target = this,
           related = event.relatedTarget,
           handleObj = event.handleObj
 
@@ -3242,7 +3251,9 @@
     },
   })
 
-  const rxhtmlTag = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([a-z][^\/\0>\x20\t\r\n\f]*)[^>]*)\/>/gi,
+  var
+
+    rxhtmlTag = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([a-z][^\/\0>\x20\t\r\n\f]*)[^>]*)\/>/gi,
 
     rnoInnerhtml = /<script|<style|<link/i,
 
@@ -3258,11 +3269,11 @@
     replaceAll: 'replaceWith'
   }, function (name, original) {
     jQuery.fn[name] = function (selector) {
-      let elems
-      const ret = [],
+      var elems,
+        ret = [],
         insert = jQuery(selector),
-        last = insert.length - 1
-      let i = 0
+        last = insert.length - 1,
+        i = 0
 
       for (; i <= last; i++) {
         elems = i === last ? this : this.clone(true)
@@ -3274,20 +3285,20 @@
       return this.pushStack(ret)
     }
   })
-  const rmargin = (/^margin/)
+  var rmargin = (/^margin/)
 
-  const rnumnonpx = new RegExp('^(' + pnum + ')(?!px)[a-z%]+$', 'i')
+  var rnumnonpx = new RegExp('^(' + pnum + ')(?!px)[a-z%]+$', 'i')
 
-  const getStyles = function (elem) {
+  var getStyles = function (elem) {
 
-    let view = elem.ownerDocument.defaultView
+    var view = elem.ownerDocument.defaultView
 
     if (!view || !view.opener) {
       view = window
     }
 
     return view.getComputedStyle(elem)
-  }
+  };
 
   (function () {
 
@@ -3305,7 +3316,7 @@
       div.innerHTML = ''
       documentElement.appendChild(container)
 
-      const divStyle = window.getComputedStyle(div)
+      var divStyle = window.getComputedStyle(div)
       pixelPositionVal = divStyle.top !== '1%'
 
       reliableMarginLeftVal = divStyle.marginLeft === '2px'
@@ -3356,8 +3367,9 @@
   })()
 
   function curCSS (elem, name, computed) {
-    let width, minWidth, maxWidth, ret
-    const style = elem.style
+    var width, minWidth, maxWidth, ret,
+
+      style = elem.style
 
     computed = computed || getStyles(elem)
 
@@ -3404,7 +3416,9 @@
     }
   }
 
-  const rdisplayswap = /^(none|table(?!-c[ea]).+)/,
+  var
+
+    rdisplayswap = /^(none|table(?!-c[ea]).+)/,
     rcustomProp = /^--/,
     cssShow = { position: 'absolute', visibility: 'hidden', display: 'block' },
     cssNormalTransform = {
@@ -3421,8 +3435,8 @@
       return name
     }
 
-    const capName = name[0].toUpperCase() + name.slice(1)
-    let i = cssPrefixes.length
+    var capName = name[0].toUpperCase() + name.slice(1),
+      i = cssPrefixes.length
 
     while (i--) {
       name = cssPrefixes[i] + capName
@@ -3433,7 +3447,7 @@
   }
 
   function finalPropName (name) {
-    let ret = jQuery.cssProps[name]
+    var ret = jQuery.cssProps[name]
     if (!ret) {
       ret = jQuery.cssProps[name] = vendorPropName(name) || name
     }
@@ -3442,7 +3456,7 @@
 
   function setPositiveNumber (elem, value, subtract) {
 
-    const matches = rcssNum.exec(value)
+    var matches = rcssNum.exec(value)
     return matches ?
 
       Math.max(0, matches[2] - (subtract || 0)) + (matches[3] || 'px') :
@@ -3450,7 +3464,7 @@
   }
 
   function augmentWidthOrHeight (elem, name, extra, isBorderBox, styles) {
-    let i,
+    var i,
       val = 0
 
     if (extra === (isBorderBox ? 'border' : 'content')) {
@@ -3490,10 +3504,10 @@
 
   function getWidthOrHeight (elem, name, extra) {
 
-    let valueIsBorderBox
-    const styles = getStyles(elem)
-    let val = curCSS(elem, name, styles)
-    const isBorderBox = jQuery.css(elem, 'boxSizing', false, styles) === 'border-box'
+    var valueIsBorderBox,
+      styles = getStyles(elem),
+      val = curCSS(elem, name, styles),
+      isBorderBox = jQuery.css(elem, 'boxSizing', false, styles) === 'border-box'
 
     if (rnumnonpx.test(val)) {
       return val
@@ -3526,7 +3540,7 @@
         get: function (elem, computed) {
           if (computed) {
 
-            const ret = curCSS(elem, 'opacity')
+            var ret = curCSS(elem, 'opacity')
             return ret === '' ? '1' : ret
           }
         }
@@ -3559,8 +3573,8 @@
         return
       }
 
-      let ret, type, hooks
-      const origName = jQuery.camelCase(name),
+      var ret, type, hooks,
+        origName = jQuery.camelCase(name),
         isCustomProp = rcustomProp.test(name),
         style = elem.style
 
@@ -3614,8 +3628,8 @@
     },
 
     css: function (elem, name, extra, styles) {
-      let val, num, hooks
-      const origName = jQuery.camelCase(name),
+      var val, num, hooks,
+        origName = jQuery.camelCase(name),
         isCustomProp = rcustomProp.test(name)
 
       if (!isCustomProp) {
@@ -3661,8 +3675,8 @@
       },
 
       set: function (elem, value, extra) {
-        let matches
-        const styles = extra && getStyles(elem),
+        var matches,
+          styles = extra && getStyles(elem),
           subtract = extra && augmentWidthOrHeight(
             elem,
             name,
@@ -3703,8 +3717,8 @@
   }, function (prefix, suffix) {
     jQuery.cssHooks[prefix + suffix] = {
       expand: function (value) {
-        let i = 0
-        const expanded = {},
+        var i = 0,
+          expanded = {},
 
           parts = typeof value === 'string' ? value.split(' ') : [value]
 
@@ -3725,9 +3739,9 @@
   jQuery.fn.extend({
     css: function (name, value) {
       return access(this, function (elem, name, value) {
-        let styles, len
-        const map = {}
-        let i = 0
+        var styles, len,
+          map = {},
+          i = 0
 
         if (Array.isArray(name)) {
           styles = getStyles(elem)
@@ -3781,14 +3795,15 @@
 
   jQuery.fx.step = {}
 
-  let fxNow, inProgress
-  const rfxtypes = /^(?:toggle|show|hide)$/,
+  var
+    fxNow, inProgress,
+    rfxtypes = /^(?:toggle|show|hide)$/,
     rrun = /queueHooks$/
 
   function genFx (type, includeWidth) {
-    let which,
-      i = 0
-    const attrs = { height: type }
+    var which,
+      i = 0,
+      attrs = { height: type }
 
     includeWidth = includeWidth ? 1 : 0
     for (; i < 4; i += 2 - includeWidth) {
@@ -3804,12 +3819,12 @@
   }
 
   function defaultPrefilter (elem, props, opts) {
-    let prop, value, toggle, hooks, oldfire, propTween, restoreDisplay, display
-    const isBox = 'width' in props || 'height' in props,
+    var prop, value, toggle, hooks, oldfire, propTween, restoreDisplay, display,
+      isBox = 'width' in props || 'height' in props,
       anim = this,
       orig = {},
-      style = elem.style
-    let hidden = elem.nodeType && isHiddenWithinTree(elem),
+      style = elem.style,
+      hidden = elem.nodeType && isHiddenWithinTree(elem),
       dataShow = dataPriv.get(elem, 'fxshow')
 
     if (!opts.queue) {
@@ -3962,13 +3977,13 @@
         if (stopped) {
           return false
         }
-        const currentTime = fxNow || createFxNow(),
+        var currentTime = fxNow || createFxNow(),
           remaining = Math.max(0, animation.startTime + animation.duration - currentTime),
 
           temp = remaining / animation.duration || 0,
-          percent = 1 - temp
-        let index = 0
-        const length = animation.tweens.length
+          percent = 1 - temp,
+          index = 0,
+          length = animation.tweens.length
 
         for (; index < length; index++) {
           animation.tweens[index].run(percent)
@@ -4000,14 +4015,15 @@
         duration: options.duration,
         tweens: [],
         createTween: function (prop, end) {
-          const tween = jQuery.Tween(elem, animation.opts, prop, end,
+          var tween = jQuery.Tween(elem, animation.opts, prop, end,
             animation.opts.specialEasing[prop] || animation.opts.easing)
           animation.tweens.push(tween)
           return tween
         },
         stop: function (gotoEnd) {
-          let index = 0
-          const length = gotoEnd ? animation.tweens.length : 0
+          var index = 0,
+
+            length = gotoEnd ? animation.tweens.length : 0
           if (stopped) {
             return this
           }
@@ -4067,7 +4083,7 @@
 
     tweeners: {
       '*': [function (prop, value) {
-        const tween = this.createTween(prop, value)
+        var tween = this.createTween(prop, value)
         adjustCSS(tween.elem, prop, rcssNum.exec(value), tween)
         return tween
       }]
@@ -4076,7 +4092,7 @@
   })
 
   jQuery.each(['toggle', 'show', 'hide'], function (i, name) {
-    const cssFn = jQuery.fn[name]
+    var cssFn = jQuery.fn[name]
     jQuery.fn[name] = function (speed, easing, callback) {
       return speed == null || typeof speed === 'boolean' ?
         cssFn.apply(this, arguments) :
@@ -4105,8 +4121,8 @@
   };
 
   (function () {
-    let input = document.createElement('input')
-    const select = document.createElement('select'),
+    var input = document.createElement('input'),
+      select = document.createElement('select'),
       opt = select.appendChild(document.createElement('option'))
 
     input.type = 'checkbox'
@@ -4149,7 +4165,7 @@
       option: {
         get: function (elem) {
 
-          const val = jQuery.find.attr(elem, 'value')
+          var val = jQuery.find.attr(elem, 'value')
           return val != null ?
             val :
 
@@ -4174,15 +4190,15 @@
     }
   })
 
-  const rfocusMorph = /^(?:focusinfocus|focusoutblur)$/
+  var rfocusMorph = /^(?:focusinfocus|focusoutblur)$/
 
   jQuery.extend(jQuery.event, {
 
     trigger: function (event, data, elem, onlyHandlers) {
 
-      let i, cur, tmp, bubbleType, ontype, handle, special
-      const eventPath = [elem || document]
-      let type = hasOwn.call(event, 'type') ? event.type : event,
+      var i, cur, tmp, bubbleType, ontype, handle, special,
+        eventPath = [elem || document],
+        type = hasOwn.call(event, 'type') ? event.type : event,
         namespaces = hasOwn.call(event, 'namespace') ? event.namespace.split('.') : []
 
       cur = tmp = elem = elem || document
@@ -4295,7 +4311,7 @@
     },
 
     simulate: function (type, elem, event) {
-      const e = jQuery.extend(
+      var e = jQuery.extend(
         new jQuery.Event(),
         event,
         {
@@ -4317,7 +4333,7 @@
       })
     },
     triggerHandler: function (type, data) {
-      const elem = this[0]
+      var elem = this[0]
       if (elem) {
         return jQuery.event.trigger(type, data, elem, true)
       }
@@ -4347,13 +4363,13 @@
   if (!support.focusin) {
     jQuery.each({ focus: 'focusin', blur: 'focusout' }, function (orig, fix) {
 
-      const handler = function (event) {
+      var handler = function (event) {
         jQuery.event.simulate(fix, event.target, jQuery.event.fix(event))
       }
 
       jQuery.event.special[fix] = {
         setup: function () {
-          const doc = this.ownerDocument || this,
+          var doc = this.ownerDocument || this,
             attaches = dataPriv.access(doc, fix)
 
           if (!attaches) {
@@ -4362,7 +4378,7 @@
           dataPriv.access(doc, fix, (attaches || 0) + 1)
         },
         teardown: function () {
-          const doc = this.ownerDocument || this,
+          var doc = this.ownerDocument || this,
             attaches = dataPriv.access(doc, fix) - 1
 
           if (!attaches) {
@@ -4376,14 +4392,14 @@
       }
     })
   }
-  const location = window.location
+  var location = window.location
 
-  const nonce = jQuery.now()
+  var nonce = jQuery.now()
 
-  const rquery = (/\?/)
+  var rquery = (/\?/)
 
   jQuery.parseXML = function (data) {
-    let xml
+    var xml
     if (!data || typeof data !== 'string') {
       return null
     }
@@ -4400,11 +4416,13 @@
     return xml
   }
 
-  const rbracket = /\[\]$/,
+  var
+    rbracket = /\[\]$/,
     rCRLF = /\r?\n/g,
     rsubmitterTypes = /^(?:submit|button|image|reset|file)$/i,
     rsubmittable = /^(?:input|select|textarea|keygen)/i
-  const r20 = /%20/g,
+  var
+    r20 = /%20/g,
     rhash = /#.*$/,
     rantiCache = /([?&])_=[^&]*/,
     rheaders = /^(.*?):[ \t]*([^\r\n]*)$/mg,
@@ -4431,9 +4449,9 @@
         dataTypeExpression = '*'
       }
 
-      let dataType,
-        i = 0
-      const dataTypes = dataTypeExpression.toLowerCase().match(rnothtmlwhite) || []
+      var dataType,
+        i = 0,
+        dataTypes = dataTypeExpression.toLowerCase().match(rnothtmlwhite) || []
 
       if (jQuery.isFunction(func)) {
 
@@ -4452,8 +4470,8 @@
   }
 
   function ajaxExtend (target, src) {
-    let key, deep
-    const flatOptions = jQuery.ajaxSettings.flatOptions || {}
+    var key, deep,
+      flatOptions = jQuery.ajaxSettings.flatOptions || {}
 
     for (key in src) {
       if (src[key] !== undefined) {
@@ -4564,13 +4582,13 @@
     } catch (e) {}
   }
 
-  const xhrSuccessStatus = {
+  var xhrSuccessStatus = {
 
-    0: 200,
+      0: 200,
 
-    1223: 204
-  }
-  let xhrSupported = jQuery.ajaxSettings.xhr()
+      1223: 204
+    },
+    xhrSupported = jQuery.ajaxSettings.xhr()
 
   support.cors = !!xhrSupported && ('withCredentials' in xhrSupported)
   support.ajax = xhrSupported = !!xhrSupported
@@ -4597,20 +4615,20 @@
     }
   })
 
-  const oldCallbacks = [],
+  var oldCallbacks = [],
     rjsonp = /(=)\?(?=&|$)|\?\?/
 
   jQuery.ajaxSetup({
     jsonp: 'callback',
     jsonpCallback: function () {
-      const callback = oldCallbacks.pop() || (jQuery.expando + '_' + (nonce++))
+      var callback = oldCallbacks.pop() || (jQuery.expando + '_' + (nonce++))
       this[callback] = true
       return callback
     }
   })
 
   support.createHTMLDocument = (function () {
-    const body = document.implementation.createHTMLDocument('').body
+    var body = document.implementation.createHTMLDocument('').body
     body.innerHTML = '<form></form><form></form>'
     return body.childNodes.length === 2
   })()
@@ -4645,8 +4663,8 @@
           })
       }
 
-      let doc, docElem, rect, win
-      const elem = this[0]
+      var doc, docElem, rect, win,
+        elem = this[0]
 
       if (!elem) {
         return
@@ -4688,11 +4706,11 @@
       function (defaultExtra, funcName) {
 
         jQuery.fn[funcName] = function (margin, value) {
-          const chainable = arguments.length && (defaultExtra || typeof margin !== 'boolean'),
+          var chainable = arguments.length && (defaultExtra || typeof margin !== 'boolean'),
             extra = defaultExtra || (margin === true || value === true ? 'margin' : 'border')
 
           return access(this, function (elem, type, value) {
-            let doc
+            var doc
 
             if (jQuery.isWindow(elem)) {
 
@@ -4725,7 +4743,9 @@
   jQuery.parseJSON = JSON.parse
   jQuery.nodeName = nodeName
 
-  const _jQuery = window.jQuery,
+  var
+
+    _jQuery = window.jQuery,
 
     _$ = window.$
 
