@@ -15,6 +15,7 @@ module.exports = function (LoginManager) {
     console.log(req.body)
     let email = req.body.email
     let password = req.body.password
+    console.log("Current cookies",req.cookies)
     console.log(email, password)
 
     if (email === undefined || password === undefined) {
