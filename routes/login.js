@@ -1,5 +1,6 @@
 let express = require('express')
 let path = require('path')
+let cookie = require('cookie-parser')
 
 const UseMemDB = true
 
