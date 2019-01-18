@@ -1,5 +1,4 @@
 function login (event) {
-  event.preventDefault()
   let email = document.getElementById('email_input').value
   let password = document.getElementById('password_input').value
   let login_form = document.getElementById('login-form')
