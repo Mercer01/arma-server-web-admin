@@ -228,7 +228,7 @@ iframe {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 40px 130px 40px 95px;
+    padding: 60px 130px 40px 95px;
 }
 
 /*------------------------------------------------------------------
@@ -258,6 +258,7 @@ iframe {
     width: 100%;
     display: block;
     padding-bottom: 54px;
+    padding-top: 20px;
 }
 
 
@@ -522,4 +523,20 @@ iframe {
     -webkit-transition: all 0.4s;
     display: flex;
     padding-left: 26px
+}
+
+.mobile-icon {
+    margin: 0 auto;
+}
+
+.mobile-icon img{
+    background-size: 50px 50px;
+    height: 100%;
+    width: 100%;
+}
+
+@media (min-width: 769px){
+    .mobile-icon {
+        display: none;
+    }
 }
