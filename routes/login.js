@@ -25,7 +25,7 @@ module.exports = function (LoginManager) {
       if (!UseMemDB) {
         LoginManager.login(email, password, res)
       } else {
-        LoginManager.login_memory(email, password, res)
+        LoginManager.login_memory(email, password, res, req)
       }
     }
   })

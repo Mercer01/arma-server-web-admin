@@ -1,8 +1,9 @@
-function login () {
+function login (event) {
+  event.preventDefault()
   let email = document.getElementById('email_input').value
   let password = document.getElementById('password_input').value
-  let login_form = document.getElementById("login-form")
-  if(!login_form.checkValidity()){
+  let login_form = document.getElementById('login-form')
+  if (!login_form.checkValidity()) {
     return
   }
   console.log(email, password)
@@ -23,8 +24,10 @@ function login () {
       error_div.textContent = json.msg
       error_div.classList.remove('fade')
       console.log('Unfaded')
+    }else{
+      window.location = document.location.origin
     }
-  })();
+  })()
 }
 
 document.getElementById('loginbtn').addEventListener('click', login)

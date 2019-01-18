@@ -7,7 +7,6 @@ const webpack = require('webpack')
 const webpackMiddleware = require('webpack-dev-middleware')
 const cookie = require('cookie-parser')
 
-
 const config = require('./config')
 const webpackConfig = require('./webpack.config')
 const setupBasicAuth = require('./lib/setup-basic-auth')
@@ -29,6 +28,7 @@ app.use(webpackMiddleware(webpackCompiler, {
 }))
 
 // setupBasicAuth(config, app)
+const login = new Login(config)
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -39,13 +39,18 @@ app.use(morgan(config.logFormat || 'dev'))
 
 app.use(serveStatic(path.join(__dirname, 'public'), { maxAge: '60 seconds' }))
 
-app.get('/login', function (req, res) {
-  res.sendFile(path.join(__dirname, './public/login.html'))
+app.get('/login', async function (req, res) {
+  console.log(req.cookies)
+  if (await login.is_signed_in(req) === false){
+    res.sendFile(path.join(__dirname, './public/login.html'))
+  }
+  else{
+    res.redirect(302, "/")
+  }
+
 })
 
 const logs = new Logs(config)
-
-const login = new Login(config)
 
 const manager = new Manager(config, logs)
 manager.load()
