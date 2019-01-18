@@ -5,6 +5,8 @@ const path = require('path')
 const serveStatic = require('serve-static')
 const webpack = require('webpack')
 const webpackMiddleware = require('webpack-dev-middleware')
+const cookie = require('cookie-parser')
+
 
 const config = require('./config')
 const webpackConfig = require('./webpack.config')
@@ -30,6 +32,7 @@ app.use(webpackMiddleware(webpackCompiler, {
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cookie())
 
 morgan.token('user', function (req) { return req.auth ? req.auth.user : 'anon' })
 app.use(morgan(config.logFormat || 'dev'))
