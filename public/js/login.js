@@ -26,6 +26,7 @@ function login (event) {
       console.log('Unfaded')
     } else {
       window.location = document.location.origin
+      location.reload();
     }
   })()
 }
