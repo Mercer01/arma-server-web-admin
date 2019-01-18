@@ -6,6 +6,7 @@ const serveStatic = require('serve-static')
 const webpack = require('webpack')
 const webpackMiddleware = require('webpack-dev-middleware')
 const cookie = require('cookie-parser')
+const compression = require("compression")
 
 const config = require('./config')
 const webpackConfig = require('./webpack.config')
@@ -23,6 +24,7 @@ const io = require('socket.io')(server)
 
 const webpackCompiler = webpack(webpackConfig)
 
+app.use(compression())
 app.use(webpackMiddleware(webpackCompiler, {
   publicPath: webpackConfig.output.publicPath
 }))

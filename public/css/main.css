@@ -37,7 +37,7 @@ body, html {
 
 /*---------------------------------------------*/
 a {
-    font-family: Poppins-Regular;
+    font-family: Poppins-Regular, Verdana, sans-serif;
     font-size: 14px;
     line-height: 1.7;
     color: #666666;
@@ -63,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-    font-family: Poppins-Regular;
+    font-family: Poppins-Regular, Verdana, sans-serif;
     font-size: 14px;
     line-height: 1.7;
     color: #666666;
@@ -174,14 +174,14 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Utility ]*/
 .txt1 {
-    font-family: Poppins-Regular;
+    font-family: Poppins-Regular, Verdana, sans-serif;
     font-size: 13px;
     line-height: 1.5;
     color: #999999;
 }
 
 .txt2 {
-    font-family: Poppins-Regular;
+    font-family: Poppins-Regular, Verdana, sans-serif;
     font-size: 13px;
     line-height: 1.5;
     color: #666666;
@@ -249,7 +249,7 @@ iframe {
 }
 
 .login100-form-title {
-    font-family: Poppins-Bold;
+    font-family: Poppins-Bold, Verdana, sans-serif;
     font-size: 24px;
     color: #333333;
     line-height: 1.2;
@@ -270,7 +270,7 @@ iframe {
 }
 
 .input100 {
-    font-family: Poppins-Medium;
+    font-family: Poppins-Medium, Verdana, sans-serif;
     font-size: 15px;
     line-height: 1.5;
     color: #666666;
@@ -363,7 +363,8 @@ iframe {
 }
 
 .login100-form-btn {
-    font-family: Montserrat-Bold;
+    /*font-family: Montserrat-Bold, Verdana, sans-serif;*/
+    font-family: Poppins-Bold, Verdana, sans-serif;
     font-size: 15px;
     line-height: 1.5;
     color: #fff;
@@ -398,10 +399,9 @@ iframe {
 
 
 @media (max-width: 992px) {
-    .wrap-login100 {
-        padding: 177px 90px 33px 85px;
-    }
-
+    /*.wrap-login100 {*/
+    /*padding: 177px 90px 33px 85px;*/
+    /*}*/
     .login100-pic {
         width: 35%;
     }
@@ -456,7 +456,7 @@ iframe {
     right: 8px;
     pointer-events: none;
 
-    font-family: Poppins-Medium;
+    font-family: Poppins-Medium, Verdana, sans-serif;
     color: #c80000;
     font-size: 13px;
     line-height: 1.4;
