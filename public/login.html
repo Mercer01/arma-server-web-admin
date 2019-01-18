@@ -8,7 +8,7 @@
     <!--===============================================================================================-->
     <link href="./favicon.ico" rel="icon" type="image/png"/>
     <!--===============================================================================================-->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/customised/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!--===============================================================================================-->
     <link href="vendor/animate/animate.css" rel="stylesheet" type="text/css">
     <!--===============================================================================================-->
@@ -36,7 +36,7 @@
 					</span>
 
                 <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                    <input class="input100" id="email_input" name="email" placeholder="Email" type="text"
+                    <input class="input100" id="email_input" name="email" placeholder="Email" type="email"
                            autocomplete="username" required>
                     <span class="focus-input100"></span>
                     <span class="symbol-input">
@@ -82,16 +82,18 @@
 
 
 <!--===============================================================================================-->
-<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="js/customised/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 <script src="vendor/bootstrap/js/popper.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
 <!--<script src="vendor/select2/select2.min.js"></script>-->
 <!--===============================================================================================-->
-<script src="vendor/tilt/tilt.jquery.min.js"></script>
-<!--===============================================================================================-->
 <script src="js/login.js"></script>
-
+<script>
+  if (screen && (screen.width > 480 && screen.height > 480)) {
+    document.write('<script type="text/javascript" src="vendor/tilt/tilt.jquery.min.js"><\/script>')
+  }
+</script>
 </body>
 </html>
