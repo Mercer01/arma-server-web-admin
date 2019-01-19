@@ -19,6 +19,7 @@ module.exports = function (manager, mods) {
 
   router.put('/:server', function (req, res) {
     var server = manager.getServer(req.params.server)
+    console.log("Server settings: ",req.body)
     server.update(req.body)
     manager.save()
     res.json(server)

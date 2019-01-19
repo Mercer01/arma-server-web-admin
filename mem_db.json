@@ -1,12 +1,1 @@
-{
-  "users": {
-    "tom@tom.com": "tim",
-    "tom@toem.com": "toam",
-    "tim@tom.com": "tom",
-    "timo": "password",
-    "timmoo": "password123"
-  },
-  "signed_in_uuid": {
-
-  }
-}
+{"users":{"tom@tom.com":"tim","tom@toem.com":"toam","tim@tom.com":"tom","timo":"password","timmoo":"password123"},"signed_in_uuid":{"54e69019-7e2b-4254-be93-052a8fc287f3":"2019-01-18T11:51:07.572Z","45c3a319-9082-4682-884a-cb49aeb1a17f":"2019-01-18T11:51:21.796Z","09c65c50-e331-4b85-ad53-889a42ae1aaf":"2019-01-18T11:51:31.933Z","80802316-4686-42d4-a204-856511a139e5":"2019-01-18T12:05:00.290Z","95620690-2106-4b6c-85b8-7f0592c25f47":"2019-01-18T13:44:06.996Z","4a4012d6-3910-466c-8008-15e6c898960b":"2019-01-18T15:10:10.252Z","f2250587-59ad-427b-bc72-c6b27bf24b16":"2019-01-18T19:13:30.412Z"}}
