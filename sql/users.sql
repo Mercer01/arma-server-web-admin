@@ -8,4 +8,4 @@ CREATE TABLE `users`
   `created`    datetime     NOT NULL,
   `modified`   datetime     NOT NULL,
   PRIMARY KEY (`id`)
-)
+);

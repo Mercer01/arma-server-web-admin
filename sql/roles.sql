@@ -5,4 +5,4 @@ CREATE TABLE `roles`
   `created`    datetime     NOT NULL,
   `modified`   datetime     NOT NULL,
   PRIMARY KEY (`id`)
-)
+);

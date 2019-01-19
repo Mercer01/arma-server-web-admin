@@ -17,6 +17,7 @@ const Mods = require('./lib/mods')
 const Logs = require('./lib/logs')
 const Settings = require('./lib/settings')
 const Login = require('./lib/login')
+const Roles = require('./lib/roles')
 
 const app = express()
 const server = require('http').Server(app)
@@ -58,7 +59,7 @@ app.get('/login', async function (req, res) {
 app.use(serveStatic(path.join(__dirname, 'public'), { maxAge: '60 seconds' }))
 
 const logs = new Logs(config)
-
+const roles = new Roles(config)
 const manager = new Manager(config, logs)
 manager.load()
 
@@ -74,6 +75,7 @@ app.use('/api/mods', require('./routes/mods')(mods))
 app.use('/api/servers', require('./routes/servers')(manager, mods))
 app.use('/api/settings', require('./routes/settings')(settings))
 app.use('/api/login', require('./routes/login')(login))
+app.use('/api/roels', require('./routes/roles')(roles))
 
 io.on('connection', function (socket) {
   socket.emit('missions', missions.missions)
