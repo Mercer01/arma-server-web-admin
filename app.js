@@ -9,7 +9,7 @@ const cookie = require('cookie-parser')
 const compression = require('compression')
 
 const config = require('./config')
-const webpackConfig = require('./webpack.config')
+// const webpackConfig = require('./webpack.config')
 const setupBasicAuth = require('./lib/setup-basic-auth')
 const Manager = require('./lib/manager')
 const Missions = require('./lib/missions')
