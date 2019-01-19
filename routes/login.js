@@ -4,6 +4,7 @@ let cookie = require('cookie-parser')
 
 const UseMemDB = true
 
+module.exports.UseMemDB = UseMemDB
 module.exports = function (LoginManager) {
   let router = express.Router()
 
