@@ -75,7 +75,7 @@ app.use('/api/mods', require('./routes/mods')(mods))
 app.use('/api/servers', require('./routes/servers')(manager, mods))
 app.use('/api/settings', require('./routes/settings')(settings))
 app.use('/api/login', require('./routes/login')(login))
-app.use('/api/roels', require('./routes/roles')(roles))
+app.use('/api/roles', require('./routes/roles')(roles))
 
 io.on('connection', function (socket) {
   socket.emit('missions', missions.missions)
