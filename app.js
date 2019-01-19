@@ -56,7 +56,7 @@ app.get('/login', async function (req, res) {
   }
 })
 
-app.use(serveStatic(path.join(__dirname, 'public'), { maxAge: '60 seconds' }))
+app.use(serveStatic(path.join(__dirname, 'public-react'), { maxAge: '60 seconds' }))
 
 const logs = new Logs(config)
 const roles = new Roles(config)
