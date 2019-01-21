@@ -3,7 +3,7 @@ var webpack = require('webpack')
 
 module.exports = {
   // Entry point for static analyzer
-  entry: path.join(__dirname, 'public-old', 'js', 'app.js'),
+  entry: path.join(__dirname, 'public', 'js', 'app.js'),
   mode: 'development',
 
   output: {
@@ -19,10 +19,10 @@ module.exports = {
 
   resolve: {
     alias: {
-      app: path.join(__dirname, 'public-old', 'js', 'app'),
+      app: path.join(__dirname, 'public', 'js', 'app'),
       marionette: 'backbone.marionette',
       'sweet-alert': 'sweetalert',
-      tpl: path.join(__dirname, 'public-old', 'js', 'tpl')
+      tpl: path.join(__dirname, 'public', 'js', 'tpl')
     }
   },
 

@@ -8,13 +8,13 @@
     "install-windows-service": "winser -i -a -c",
     "uninstall-windows-service": "winser -r -x -c",
     "lint": "standard --verbose *.js lib/**/*.js routes/**/*.js test/**/*.js",
-    "start": "nodemon app.js",
+    "start": "nodemon app.js && react-scripts start",
     "test": "node node_modules/mocha/bin/mocha --recursive",
     "run": "node app.js",
     "react-start": "react-scripts start",
-    "react-build": "react-scripts build",
+    "build": "react-scripts build",
     "react-test": "react-scripts test",
-    "react-eject": "react-scripts eject"
+    "eject": "react-scripts eject"
   },
   "standard": {
     "env": [
