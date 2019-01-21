@@ -3,13 +3,13 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const path = require('path')
 const serveStatic = require('serve-static')
-// const webpack = require('webpack')
-// const webpackMiddleware = require('webpack-dev-middleware')
+const webpack = require('webpack')
+const webpackMiddleware = require('webpack-dev-middleware')
 const cookie = require('cookie-parser')
 const compression = require('compression')
 
 const config = require('./config')
-// const webpackConfig = require('./webpack.config')
+const webpackConfig = require('./webpack.config')
 const setupBasicAuth = require('./lib/setup-basic-auth')
 const Manager = require('./lib/manager')
 const Missions = require('./lib/missions')
@@ -23,12 +23,12 @@ const app = express()
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
 
-// const webpackCompiler = webpack(webpackConfig)
-//
-// app.use(compression())
-// app.use(webpackMiddleware(webpackCompiler, {
-//   publicPath: webpackConfig.output.publicPath
-// }))
+const webpackCompiler = webpack(webpackConfig)
+
+app.use(compression())
+app.use(webpackMiddleware(webpackCompiler, {
+  publicPath: webpackConfig.output.publicPath
+}))
 
 // setupBasicAuth(config, app)
 const login = new Login(config)
@@ -44,13 +44,13 @@ app.get('/', async function (req, res) {
   if (await login.is_signed_in(req) === false) {
     res.redirect(302, '/login')
   } else {
-    res.sendFile(path.join(__dirname, './public-react/index.html'))
+    res.sendFile(path.join(__dirname, './public/index.html'))
   }
 })
 
 app.get('/login', async function (req, res) {
   if (await login.is_signed_in(req) === false) {
-    res.sendFile(path.join(__dirname, './public-react/login.html'))
+    res.sendFile(path.join(__dirname, './public/login.html'))
   } else {
     res.redirect(302, '/')
   }
