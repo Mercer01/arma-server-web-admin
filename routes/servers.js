@@ -1,25 +1,25 @@
-var express = require('express')
+const express = require('express')
 
 module.exports = function (manager, mods) {
-  var router = express.Router()
+  const router = express.Router()
 
   router.get('/', function (req, res) {
     res.json(manager.getServers())
   })
 
   router.post('/', function (req, res) {
-    var server = manager.addServer(req.body)
+    let server = manager.addServer(req.body)
     res.json(server)
   })
 
   router.get('/:server', function (req, res) {
-    var server = manager.getServer(req.params.server)
+    let server = manager.getServer(req.params.server)
     res.json(server)
   })
 
   router.put('/:server', function (req, res) {
-    var server = manager.getServer(req.params.server)
-    console.log("Server settings: ",req.body)
+    let server = manager.getServer(req.params.server)
+    console.log('Server settings: ', req.body)
     server.update(req.body)
     manager.save()
     res.json(server)
@@ -31,13 +31,13 @@ module.exports = function (manager, mods) {
   })
 
   router.post('/:server/start', function (req, res) {
-    var server = manager.getServer(req.params.server)
+    let server = manager.getServer(req.params.server)
     server.start()
     res.json({ status: 'ok', pid: server.pid })
   })
 
   router.post('/:server/stop', function (req, res) {
-    var server = manager.getServer(req.params.server)
+    let server = manager.getServer(req.params.server)
     server.stop(function () {
       if (!server.pid) {
         res.json({ status: true, pid: server.pid })
