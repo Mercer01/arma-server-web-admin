@@ -44,19 +44,19 @@ app.get('/', async function (req, res) {
   if (await login.is_signed_in(req) === false) {
     res.redirect(302, '/login')
   } else {
-    res.sendFile(path.join(__dirname, './public/index.html'))
+    res.sendFile(path.join(__dirname, './public-old/index.html'))
   }
 })
 
 app.get('/login', async function (req, res) {
   if (await login.is_signed_in(req) === false) {
-    res.sendFile(path.join(__dirname, './public/login.html'))
+    res.sendFile(path.join(__dirname, './public-old/login.html'))
   } else {
     res.redirect(302, '/')
   }
 })
 
-app.use(serveStatic(path.join(__dirname, 'public-react'), { maxAge: '60 seconds' }))
+app.use(serveStatic(path.join(__dirname, 'public'), { maxAge: '60 seconds' }))
 
 const logs = new Logs(config)
 const roles = new Roles(config)
