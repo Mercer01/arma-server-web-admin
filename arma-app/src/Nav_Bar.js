@@ -18,15 +18,10 @@ class ServerNavBar extends Component {
     })
     fetch('/api/servers')
       .then(response => response.json())
-      // .then(data => this.setState({
-      //   server_data: ['test', 'tom', 'tim', 'mercer is a penis'],
-      //   is_loading: false
-      // }))
       .then(data => this.setState({
         server_data: data,
         is_loading: false
       }))
-    console.log('I RAN')
   }
 
   render () {
@@ -44,9 +39,9 @@ class ServerNavBar extends Component {
       }
       console.log(server_names)
       let server_names_li = server_names.map(function (name, index) {
-        return <li key={index}>{name}</li>
+        return <li key={index}><a href={`#servers/${name}`}>{name}</a></li>
       })
-      return <ul>{server_names_li} </ul>
+      return <ul className={"dropdown-menu"}>{server_names_li} </ul>
     }
 
   }
@@ -66,36 +61,16 @@ class NavBar extends Component {
 
   handleServerTabOpen () {
     this.setState({ serverTabOpen: true })
-    // this.callApi()
   }
 
   handleServerTabClose () {
     this.setState({ serverTabOpen: false })
   }
 
-  //   let b = (async () => {
-  //     const api_res = await fetch('/api/servers')
-  //     let res_json = await api_res.json()
-  //     let server_names = []
-  //     for (const server of res_json) {
-  //       server_names.push(server.id)
-  //     }
-  //     console.log(server_names)
-  //     let server_names_li = server_names.map(function (name) {
-  //       return <li>{name}</li>
-  //     })
-  //     return <ul>{server_names_li} </ul>
-  //   })(console.log(a))
-  // a.then(result => {
-  //   console.log(result)
-  //   return result
-  // })
-  // }
-
   render () {
     let server_a
     if (this.state.serverTabOpen) {
-      server_a = <li>
+      server_a = <li className={"open"}>
         <a href="#Servers" id="server_nav_bar" onClick={this.handleServerTabClose}>Servers</a>
         <ServerNavBar/>
 
