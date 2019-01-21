@@ -1,36 +1,104 @@
 import React, { Component } from 'react'
 import './Nav_Bar.css'
 
-class Nav_Bar extends Component {
+class ServerNavBar extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      server_data: null,
+      is_loading: true
+    }
+  }
+
+  componentDidMount () {
+    this.setState({ is_loading: true })
+    this.setState({
+      server_data: ['tio', 'tom'],
+      is_loading: false
+    })
+    fetch('/api/servers')
+      .then(response => response.json())
+      // .then(data => this.setState({
+      //   server_data: ['test', 'tom', 'tim', 'mercer is a penis'],
+      //   is_loading: false
+      // }))
+      .then(data => this.setState({
+        server_data: data,
+        is_loading: false
+      }))
+    console.log('I RAN')
+  }
+
+  render () {
+    if (this.state.is_loading === true) {
+      return <ul>
+        <li>
+          "Loading"
+        </li>
+      </ul>
+    } else {
+      let server_names = []
+      console.log(this.state.server_data)
+      for (const server of this.state.server_data) {
+        server_names.push(server.id)
+      }
+      console.log(server_names)
+      let server_names_li = server_names.map(function (name, index) {
+        return <li key={index}>{name}</li>
+      })
+      return <ul>{server_names_li} </ul>
+    }
+
+  }
+}
+
+class NavBar extends Component {
   constructor (props) {
     super(props)
     this.handleServerTabOpen = this.handleServerTabOpen.bind(this)
     this.handleServerTabClose = this.handleServerTabClose.bind(this)
-    this.state = { serverTabOpen: false }
+    this.state = {
+      serverTabOpen: false,
+      server_data: null,
+      is_loading: false
+    }
   }
 
   handleServerTabOpen () {
     this.setState({ serverTabOpen: true })
+    // this.callApi()
   }
 
   handleServerTabClose () {
     this.setState({ serverTabOpen: false })
   }
 
-  ServerListingCreate () {
-  let server_names = ['Ben', 'Bob', 'Jerry', 'Tim']
-  let server_names_li = server_names.map(function (name) {
-    return <li>{name}</li>
-  })
-  return <ul>{server_names_li} </ul>
-}
+  //   let b = (async () => {
+  //     const api_res = await fetch('/api/servers')
+  //     let res_json = await api_res.json()
+  //     let server_names = []
+  //     for (const server of res_json) {
+  //       server_names.push(server.id)
+  //     }
+  //     console.log(server_names)
+  //     let server_names_li = server_names.map(function (name) {
+  //       return <li>{name}</li>
+  //     })
+  //     return <ul>{server_names_li} </ul>
+  //   })(console.log(a))
+  // a.then(result => {
+  //   console.log(result)
+  //   return result
+  // })
+  // }
 
   render () {
     let server_a
     if (this.state.serverTabOpen) {
       server_a = <li>
         <a href="#Servers" id="server_nav_bar" onClick={this.handleServerTabClose}>Servers</a>
-        {this.ServerListingCreate()}
+        <ServerNavBar/>
+
       </li>
 
     } else {
@@ -59,7 +127,7 @@ class Nav_Bar extends Component {
               <li>
                 <a href="#Mods">Mods</a>
               </li>
-                {server_a}
+              {server_a}
               <li>
                 <a href="Users">Users</a>
               </li>
@@ -71,72 +139,4 @@ class Nav_Bar extends Component {
   }
 }
 
-function UserGreeting (props) {
-  return <h1>Welcome back!</h1>
-}
-
-function GuestGreeting (props) {
-  return <h1>Please sign up.</h1>
-}
-
-function Greeting (props) {
-  const isLoggedIn = props.isLoggedIn
-  if (isLoggedIn) {
-    return <Nav_Bar.ServerListingCreate/>
-    // return <UserGreeting/>
-  }
-  return <GuestGreeting/>
-}
-
-function LoginButton (props) {
-  return (
-    <button onClick={props.onClick}>
-      Login
-    </button>
-  )
-}
-
-function LogoutButton (props) {
-  return (
-    <button onClick={props.onClick}>
-      Logout
-    </button>
-  )
-}
-
-class LoginControl extends React.Component {
-  constructor (props) {
-    super(props)
-    this.handleLoginClick = this.handleLoginClick.bind(this)
-    this.handleLogoutClick = this.handleLogoutClick.bind(this)
-    this.state = { isLoggedIn: false }
-  }
-
-  handleLoginClick () {
-    this.setState({ isLoggedIn: true })
-  }
-
-  handleLogoutClick () {
-    this.setState({ isLoggedIn: false })
-  }
-
-  render () {
-    const isLoggedIn = this.state.isLoggedIn
-    let button
-
-    if (isLoggedIn) {
-      button = <LogoutButton onClick={this.handleLogoutClick}/>
-    } else {
-      button = <LoginButton onClick={this.handleLoginClick}/>
-    }
-
-    return (
-      <div>
-        <Greeting isLoggedIn={isLoggedIn}/>
-        {button}
-      </div>
-    )
-  }
-}
-
-export { Nav_Bar, Greeting, LoginControl }
+export { NavBar }
