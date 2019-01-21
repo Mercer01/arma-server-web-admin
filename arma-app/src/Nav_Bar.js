@@ -71,14 +71,16 @@ class NavBar extends Component {
     let server_a
     if (this.state.serverTabOpen) {
       server_a = <li className={"open"}>
-        <a href="#Servers" id="server_nav_bar" onClick={this.handleServerTabClose}>Servers</a>
+        <a href="#Servers" id="server_nav_bar" onClick={this.handleServerTabClose}>Servers
+          <b className={'caret'}>​</b></a>
         <ServerNavBar/>
 
       </li>
 
     } else {
       server_a = <li>
-        <a href="#Servers" id="server_nav_bar" onClick={this.handleServerTabOpen}>Servers</a>
+        <a href="#Servers" id="server_nav_bar" onClick={this.handleServerTabOpen}>Servers
+        <b className={'caret'}>​</b></a>
       </li>
     }
 
