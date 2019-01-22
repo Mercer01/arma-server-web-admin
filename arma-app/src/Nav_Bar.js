@@ -106,7 +106,7 @@ class NavBar extends Component {
               </li>
               {server_a}
               <li>
-                <a href="Users">Users</a>
+                <a href="#Users">Users</a>
               </li>
             </ul>
           </div>
